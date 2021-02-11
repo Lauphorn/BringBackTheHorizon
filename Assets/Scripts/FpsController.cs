@@ -60,7 +60,6 @@ public class FpsController : MonoBehaviour
         if (!BlockMove)
         {
             Move();
-
         }
 
         x = Input.GetAxis("Horizontal");

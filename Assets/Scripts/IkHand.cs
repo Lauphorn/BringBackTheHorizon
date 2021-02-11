@@ -26,19 +26,29 @@ public class IkHand : MonoBehaviour
 
     public float RightHandWeight;
 
+    [HideInInspector]
     public Transform RPouce;
+    [HideInInspector]
     public Transform RIndex;
+    [HideInInspector]
     public Transform RMajeur;
+    [HideInInspector]
     public Transform RAnnulaire;
+    [HideInInspector]
     public Transform RAuriculaire;
 
     public Transform LeftHandTarget;
     public float LeftHandWeight;
 
+    [HideInInspector]
     public Transform LPouce;
+    [HideInInspector]
     public Transform LIndex;
+    [HideInInspector]
     public Transform LMajeur;
+    [HideInInspector]
     public Transform LAnnulaire;
+    [HideInInspector]
     public Transform LAuriculaire;
 
     [HideInInspector]
