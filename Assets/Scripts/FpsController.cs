@@ -149,7 +149,7 @@ public class FpsController : MonoBehaviour
 
         if (m_Rigidbody.useGravity)
         {
-            m_Rigidbody.AddForce(Physics.gravity * 3, ForceMode.Acceleration);
+            m_Rigidbody.AddForce(Physics.gravity * 10, ForceMode.Acceleration);
         }
     }
 
@@ -158,10 +158,7 @@ public class FpsController : MonoBehaviour
     {
         if (collision.collider.tag == "Stairs")
         {
-            Debug.Log("MyTag");
             m_Rigidbody.useGravity = false;
-            m_MaxWalkSpeed = 1.3f;
-            Anim.SetBool("Stairs", true);
         }
     }
 
@@ -169,12 +166,26 @@ public class FpsController : MonoBehaviour
     {
         if (collision.collider.tag == "Stairs")
         {
-            Debug.Log("MyTag");
             m_Rigidbody.useGravity = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Stairs")
+        {
+            m_MaxWalkSpeed = 1.3f;
+            Anim.SetBool("Stairs", true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Stairs")
+        {
             m_MaxWalkSpeed = 1.9f;
             Anim.SetBool("Stairs", false);
         }
     }
-
 }
 

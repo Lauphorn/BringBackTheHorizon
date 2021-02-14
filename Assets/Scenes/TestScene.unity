@@ -5232,6 +5232,7 @@ GameObject:
   - component: {fileID: 1079690297}
   - component: {fileID: 1079690302}
   - component: {fileID: 1079690303}
+  - component: {fileID: 1079690301}
   m_Layer: 9
   m_Name: Body
   m_TagString: Player
@@ -5307,6 +5308,20 @@ MonoBehaviour:
   MoveDone: 0
   rotationDamping: 0.2
   Anim: {fileID: 5866666021641416525}
+--- !u!136 &1079690301
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079690296}
+  m_Material: {fileID: 13400000, guid: 4d1a762feb450104bb50b11e0815cd20, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 2.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!33 &1079690302
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8223,13 +8238,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035111233}
-  m_LocalRotation: {x: 0.17486306, y: -0.7689878, z: 0.25358963, w: 0.56015444}
+  m_LocalRotation: {x: 0.015702708, y: -0.9485657, z: 0.30763325, w: 0.07306392}
   m_LocalPosition: {x: 13.32, y: 3, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 35.868, y: -107.512, z: 1.072}
+  m_LocalEulerAnglesHint: {x: 35.868, y: -170.844, z: 1.072}
 --- !u!114 &2035111237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8859,7 +8874,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LAudioS: {fileID: 1056384324993585123}
   RAudioS: {fileID: 6229385555102068661}
-  Footstep: {fileID: 8300000, guid: 51b35cb0ea8995e4fbb43d1c31fbbe33, type: 3}
+  Footstep:
+  - {fileID: 8300000, guid: 9c924a5f5c19c2f41ad89b5b7ca5164f, type: 3}
+  - {fileID: 8300000, guid: c2c197ba861f6d54e8c177038116bd31, type: 3}
+  - {fileID: 8300000, guid: 64f6ad4be19634341b1d301c39a0444f, type: 3}
+  - {fileID: 8300000, guid: aa3d81ed3d857a047b1eee67d46ea79c, type: 3}
+  - {fileID: 8300000, guid: fa2aaa21968431a4eb4e3e8324a9299f, type: 3}
+  - {fileID: 8300000, guid: 6d1ba385e5490634bab0631d325499a7, type: 3}
+  - {fileID: 8300000, guid: 14672ae9be40fed47a668a7b61c530e4, type: 3}
+  - {fileID: 8300000, guid: 988be6d46b1541f499961c0d0188099f, type: 3}
+  - {fileID: 8300000, guid: 7caaa802a89852a4a8f6e931b4d9111b, type: 3}
+  - {fileID: 8300000, guid: c4c67ca939e4a9147a7e642edd974a9b, type: 3}
+  - {fileID: 8300000, guid: b7475327bc3eaa94798c36ddc06ed6c4, type: 3}
+  - {fileID: 8300000, guid: 159e7f855ae07364abd9ccfdfe1098f8, type: 3}
 --- !u!4 &924313094809919073
 Transform:
   m_ObjectHideFlags: 0

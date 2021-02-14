@@ -9,7 +9,9 @@ public class Footsteps : MonoBehaviour
     public AudioSource LAudioS;
     public AudioSource RAudioS;
 
-    public AudioClip Footstep;
+
+
+    public List<AudioClip> Footstep;
 
     float Timer;
 
@@ -28,7 +30,7 @@ public class Footsteps : MonoBehaviour
     {
         if (Timer <= 0)
         {
-            LAudioS.PlayOneShot(Footstep);
+            LAudioS.PlayOneShot(Footstep[Random.Range(0,Footstep.Capacity)]);
             Timer = 0.2f;
         }
     }
@@ -37,7 +39,7 @@ public class Footsteps : MonoBehaviour
     {
         if (Timer <= 0)
         {
-            RAudioS.PlayOneShot(Footstep);
+            RAudioS.PlayOneShot(Footstep[Random.Range(0, Footstep.Capacity)]);
             Timer = 0.2f;
         }
     }
