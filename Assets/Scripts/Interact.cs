@@ -35,7 +35,11 @@ public class Interact : MonoBehaviour
         }
         else
         {
-            savedObject.interactable = false;
+            if(savedObject != null)
+            {
+                savedObject.interactable = false;
+                savedObject = null;
+            }
         }
     }
 }

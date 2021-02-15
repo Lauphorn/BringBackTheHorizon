@@ -36,6 +36,12 @@ public class IkObject : MonoBehaviour
     [ConditionalField("MoveLefttHand")] public HandLineRenderer LeftHand;
     [ConditionalField("MoveLefttHand")] public float LeftHandWeight;
 
+    public enum LogoChoice
+    {
+        Hand,
+        Eye
+    }
+    public LogoChoice logo;
 
     public Animator Anim;
     public Animator KnobAnimator;
@@ -43,10 +49,6 @@ public class IkObject : MonoBehaviour
     [HideInInspector]
     public bool interactable;
     bool AnimBlock;
-
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +62,14 @@ public class IkObject : MonoBehaviour
     void Update()
     {
         KnobAnimator.SetBool("Show", InRange);
-        KnobAnimator.SetBool("Eye", interactable);
+        if(logo == LogoChoice.Eye)
+        {
+            KnobAnimator.SetBool("Eye", interactable);
+        }
+        if (logo == LogoChoice.Hand)
+        {
+            KnobAnimator.SetBool("Hand", interactable);
+        }
 
         if (interacted)
         {

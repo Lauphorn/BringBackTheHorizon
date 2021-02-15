@@ -62,6 +62,8 @@ public class FpsController : MonoBehaviour
             Move();
         }
 
+        CheckStair();
+
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
 
@@ -148,6 +150,26 @@ public class FpsController : MonoBehaviour
         }
     }
 
+    public void CheckStair()
+    {
+        int layerMask = 1 << 12;
+        // This would cast rays only against colliders in layer 12
+
+        RaycastHit hit;
+
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down),Color.blue, 1);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1, layerMask))
+        {
+            m_MaxWalkSpeed = 1.3f;
+            Anim.SetBool("Stairs", true);
+        }
+        else
+        {
+            m_MaxWalkSpeed = 1.9f;
+            Anim.SetBool("Stairs", false);
+        }
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -162,24 +184,6 @@ public class FpsController : MonoBehaviour
         if (collision.collider.tag == "Stairs")
         {
             m_Rigidbody.useGravity = true;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Stairs")
-        {
-            m_MaxWalkSpeed = 1.3f;
-            Anim.SetBool("Stairs", true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Stairs")
-        {
-            m_MaxWalkSpeed = 1.9f;
-            Anim.SetBool("Stairs", false);
         }
     }
 }
