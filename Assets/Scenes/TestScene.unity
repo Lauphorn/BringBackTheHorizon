@@ -4863,8 +4863,8 @@ MonoBehaviour:
   cam: {fileID: 983005922}
   Anim: {fileID: 5866666021641416525}
   cacheRot: 0
-  oldRot: {x: 0, y: 0, z: 0, w: 0}
-  actualRot: {x: 0, y: 0, z: 0, w: 0}
+  oldRot: {x: -0.2855474, y: 0.2768209, z: 0.0865375, w: 0.9134245}
+  actualRot: {x: -0.2855474, y: 0.2768209, z: 0.0865375, w: 0.9134245}
   LookAtTarget: {fileID: 0}
   BlockRotation: 0
 --- !u!114 &983005924
