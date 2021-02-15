@@ -102,11 +102,6 @@ public class FpsController : MonoBehaviour
             }
         }
 
-
-        IkHead.Instance.FootWeight = 1 - m_Rigidbody.velocity.magnitude;
-
-
-
         Anim.SetFloat("x", Rotation.InverseTransformDirection(m_Rigidbody.velocity).x);
         Anim.SetFloat("z", Rotation.InverseTransformDirection(m_Rigidbody.velocity).z);
         Anim.SetFloat("Speed", m_Rigidbody.velocity.magnitude);

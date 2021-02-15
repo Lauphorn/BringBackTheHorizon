@@ -38,7 +38,10 @@ public class IkObject : MonoBehaviour
 
 
     public Animator Anim;
-    bool Interactable, interacted, done;
+    public Animator KnobAnimator;
+    bool InRange, interacted, done;
+    [HideInInspector]
+    public bool interactable;
     bool AnimBlock;
 
 
@@ -56,12 +59,15 @@ public class IkObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        KnobAnimator.SetBool("Show", InRange);
+        KnobAnimator.SetBool("Eye", interactable);
+
         if (interacted)
         {
             if (MoveBody)
             {
                 bodyController.BlockMove = true;
-                bodyController.FollowTargetWitouthRotation(BodyFollowPosition, 0.05f, 7);
+                bodyController.FollowTargetWitouthRotation(BodyFollowPosition, 0.05f, 3.5f);
             }
 
             if (MoveHands)
@@ -98,7 +104,7 @@ public class IkObject : MonoBehaviour
 
     public void Interacted()
     {
-        if (Interactable && !done)
+        if (interactable && InRange && !done)
         {
             if (OneUse)
             {
@@ -155,7 +161,7 @@ public class IkObject : MonoBehaviour
     {
         if(other.tag == "ItemRange")
         {
-            Interactable = true;
+            InRange = true;
         }
     }
 
@@ -163,7 +169,7 @@ public class IkObject : MonoBehaviour
     {
         if (other.tag == "ItemRange")
         {
-            Interactable = false;
+            InRange = false;
         }
     }
 

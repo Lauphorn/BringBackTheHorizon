@@ -25,7 +25,7 @@ public class IkHead : MonoBehaviour
     public Transform LookAt;
 
     public float lookAtWeight;
-    public float FootWeight;
+    public float LeftFootWeight, RightFootWeight;
     public float FootDamping;
 
     [Range(0, 1f)]
@@ -47,10 +47,10 @@ public class IkHead : MonoBehaviour
             // FOOT //
 
             // Set the weights of left and right feet to the current value defined by the curve in our animations.
-            avatar.SetIKPositionWeight(AvatarIKGoal.LeftFoot, FootWeight);
-            avatar.SetIKRotationWeight(AvatarIKGoal.LeftFoot, FootWeight);
-            avatar.SetIKPositionWeight(AvatarIKGoal.RightFoot, FootWeight);
-            avatar.SetIKRotationWeight(AvatarIKGoal.RightFoot, FootWeight);
+            avatar.SetIKPositionWeight(AvatarIKGoal.LeftFoot, LeftFootWeight);
+            avatar.SetIKRotationWeight(AvatarIKGoal.LeftFoot, LeftFootWeight);
+            avatar.SetIKPositionWeight(AvatarIKGoal.RightFoot, RightFootWeight);
+            avatar.SetIKRotationWeight(AvatarIKGoal.RightFoot, RightFootWeight);
 
 
             // Left Foot

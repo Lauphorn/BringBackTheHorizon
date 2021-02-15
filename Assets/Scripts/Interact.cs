@@ -7,6 +7,8 @@ public class Interact : MonoBehaviour
 
     public Camera mCam;
     int layer_mask;
+    IkObject savedObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +22,20 @@ public class Interact : MonoBehaviour
         Debug.DrawRay(mCam.transform.position, mCam.transform.forward, Color.red);
         RaycastHit hit;
 
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        if (Physics.Raycast(mCam.transform.position, mCam.transform.forward, out hit, 100.0f, layer_mask) && hit.collider.tag == "Item")
         {
-            if (Physics.Raycast(mCam.transform.position, mCam.transform.forward, out hit, 100.0f,layer_mask) && hit.collider.tag == "Item")
+            savedObject = hit.transform.GetComponent<IkObject>();
+            savedObject.interactable=true;
+
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("Hit Printing Press");
-                Debug.Log(hit.transform.gameObject.name);
                 hit.transform.GetComponent<IkObject>().Interacted();
             }
         }
-
+        else
+        {
+            savedObject.interactable = false;
+        }
     }
 }
