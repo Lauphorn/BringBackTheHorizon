@@ -1,0 +1,8 @@
+Support Unity version 2019.4.15+
+HDRP 7.5.2 and up
+URP 7.5.2 and up
+
+
+Double click on the HDRP or URP unitypackage file, which are located in the root directory of the pack, to import appropriate package.
+
+All the necessary files will be updated and you can use the pack in your SRP.
