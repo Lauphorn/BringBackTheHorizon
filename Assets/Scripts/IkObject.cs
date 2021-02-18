@@ -61,8 +61,15 @@ public class IkObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        KnobAnimator.SetBool("Show", InRange);
-        if(logo == LogoChoice.Eye)
+        if (!interacted)
+        {
+            KnobAnimator.SetBool("Show", InRange);
+        }
+        else
+        {
+            KnobAnimator.SetBool("Show", false);
+        }
+        if (logo == LogoChoice.Eye)
         {
             KnobAnimator.SetBool("Eye", interactable);
         }
@@ -76,7 +83,7 @@ public class IkObject : MonoBehaviour
             if (MoveBody)
             {
                 bodyController.BlockMove = true;
-                bodyController.FollowTargetWitouthRotation(BodyFollowPosition, 0.05f, 3.5f);
+                bodyController.BodyFollowPosition = BodyFollowPosition;
             }
 
             if (MoveHands)

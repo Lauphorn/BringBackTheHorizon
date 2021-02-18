@@ -38,12 +38,14 @@ public class FpsController : MonoBehaviour
 
     [HideInInspector]
     public bool BlockMove, MoveDone;
+    [HideInInspector]
+    public Transform BodyFollowPosition;
 
     private float z, x, YRot;
     private bool RRot, LRot;
  
     Vector3 _direction;
-    public float rotationDamping;
+    public float rotationDamping, moveDamping;
 
     public Animator Anim;
 
@@ -60,7 +62,9 @@ public class FpsController : MonoBehaviour
         if (!BlockMove)
         {
             Move();
+            MoveDone = false;
         }
+
 
         CheckStair();
 
@@ -104,8 +108,8 @@ public class FpsController : MonoBehaviour
             }
         }
 
-        Anim.SetFloat("x", Rotation.InverseTransformDirection(m_Rigidbody.velocity).x);
-        Anim.SetFloat("z", Rotation.InverseTransformDirection(m_Rigidbody.velocity).z);
+        Anim.SetFloat("x", Mathf.Lerp(Anim.GetFloat("x"), Rotation.InverseTransformDirection(m_Rigidbody.velocity).x, moveDamping));
+        Anim.SetFloat("z", Mathf.Lerp(Anim.GetFloat("z"), Rotation.InverseTransformDirection(m_Rigidbody.velocity).z, moveDamping));
         Anim.SetFloat("Speed", m_Rigidbody.velocity.magnitude);
     }
 
@@ -133,7 +137,7 @@ public class FpsController : MonoBehaviour
         else
         {
             MoveDone = true;
-            m_Rigidbody.position = Vector3.Lerp(m_Rigidbody.position, target.position, 10 * Time.deltaTime);
+            //m_Rigidbody.position = Vector3.Lerp(m_Rigidbody.position, target.position, 10 * Time.deltaTime);
         }
     }
 
@@ -142,6 +146,10 @@ public class FpsController : MonoBehaviour
         if (!BlockMove)
         {
             m_Rigidbody.AddForce(_direction * m_Acceleration, ForceMode.Acceleration);
+        }
+        else
+        {
+            FollowTargetWitouthRotation(BodyFollowPosition, 0.1f, 10f);
         }
 
         if (m_Rigidbody.useGravity)
