@@ -24,8 +24,17 @@ public class Interact : MonoBehaviour
 
         if (Physics.Raycast(mCam.transform.position, mCam.transform.forward, out hit, 100.0f, layer_mask) && hit.collider.tag == "Item")
         {
-            savedObject = hit.transform.GetComponent<IkObject>();
-            savedObject.interactable=true;
+            if(savedObject != hit.transform.GetComponent<IkObject>())
+            {
+                if(savedObject != null)
+                {
+                    savedObject.interactable = false;
+                }
+
+                savedObject = hit.transform.GetComponent<IkObject>();
+                savedObject.interactable = true;
+            }
+
 
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {

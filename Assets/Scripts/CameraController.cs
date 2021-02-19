@@ -96,11 +96,11 @@ public class CameraController : MonoBehaviour
             lookPos.y = 0;
 
             m_CharacterTargetRot = Quaternion.LookRotation(lookPos);
-            characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot, 2 * Time.deltaTime);
+            characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot, 1 * Time.deltaTime);
 
             Quaternion _lookRotation = Quaternion.LookRotation((LookAtTarget.position - cam.position).normalized);
             m_CameraTargetRot = Quaternion.Euler(_lookRotation.eulerAngles.x, cam.localRotation.eulerAngles.y, cam.localRotation.eulerAngles.z);
-            cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot, 2 * Time.deltaTime);
+            cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot, 1 * Time.deltaTime);
 
         }
    
