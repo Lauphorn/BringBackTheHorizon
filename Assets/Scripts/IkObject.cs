@@ -80,6 +80,11 @@ public class IkObject : MonoBehaviour
 
         if (interacted)
         {
+            if (Crouch)
+            {
+                Handcontroller.CrouchWeight = CrouchWeight;
+            }
+
             if (MoveBody)
             {
                 bodyController.BlockMove = true;
@@ -105,7 +110,7 @@ public class IkObject : MonoBehaviour
                     Anim.SetTrigger("Interact");
                     if (LaunchAnim)
                     {
-                        IkHand.Instance.LaunchAnim(AnimBool);
+                        Handcontroller.LaunchAnim(AnimBool);
                     }
                     AnimBlock = true;
                 }

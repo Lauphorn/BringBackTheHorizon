@@ -149,7 +149,7 @@ public class FpsController : MonoBehaviour
         }
         else
         {
-            FollowTargetWitouthRotation(BodyFollowPosition, 0.05f, 10f);
+            FollowTargetWitouthRotation(BodyFollowPosition, 0.2f, 10f);
         }
 
         if (m_Rigidbody.useGravity)

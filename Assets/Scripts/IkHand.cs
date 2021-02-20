@@ -23,6 +23,7 @@ public class IkHand : MonoBehaviour
 
     public Animator avatar;
     public FullBodyBipedIK FullBodyIK;
+    public float CrouchWeight;
 
     public Transform RightHandTarget;
     public float RightHandWeight;
@@ -76,11 +77,12 @@ public class IkHand : MonoBehaviour
     {
         if (avatar)
         {
+            avatar.SetLayerWeight(2, CrouchWeight);
 
             // RIGHT //
             if (RightHandTarget != null)
             {
-                avatar.SetIKPositionWeight(AvatarIKGoal.RightHand, RightHandWeight);
+                //avatar.SetIKPositionWeight(AvatarIKGoal.RightHand, RightHandWeight);
                 avatar.SetIKRotationWeight(AvatarIKGoal.RightHand, RightHandWeight);
                 avatar.SetIKPosition(AvatarIKGoal.RightHand, RightHandTarget.position);
                 avatar.SetIKRotation(AvatarIKGoal.RightHand, RightHandTarget.rotation * Quaternion.Euler(-90, 90f, 0));
@@ -135,7 +137,7 @@ public class IkHand : MonoBehaviour
             // LEFT //
             if (LeftHandTarget != null)
             {
-                avatar.SetIKPositionWeight(AvatarIKGoal.LeftHand, LeftHandWeight);
+                //avatar.SetIKPositionWeight(AvatarIKGoal.LeftHand, LeftHandWeight);
                 avatar.SetIKRotationWeight(AvatarIKGoal.LeftHand, LeftHandWeight);
                 avatar.SetIKPosition(AvatarIKGoal.LeftHand, LeftHandTarget.position);
                 avatar.SetIKRotation(AvatarIKGoal.LeftHand, LeftHandTarget.rotation * Quaternion.Euler(-90, -90f, 0));
