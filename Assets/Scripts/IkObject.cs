@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
+using UnityEngine.Events;
 public class IkObject : MonoBehaviour
 {
 
@@ -22,6 +23,9 @@ public class IkObject : MonoBehaviour
 
     public bool LaunchAnim;
     [ConditionalField("LaunchAnim")] public string AnimBool;
+
+    public bool LaunchFunction;
+    [ConditionalField("LaunchFunction")] public UnityEvent OtherFunctions;
 
 
     public bool MoveHands;
@@ -47,7 +51,7 @@ public class IkObject : MonoBehaviour
     public Animator KnobAnimator;
     bool InRange, interacted, done;
     [HideInInspector]
-    public bool interactable;
+    public bool interactable,looked;
     bool AnimBlock;
 
     // Start is called before the first frame update
@@ -71,11 +75,11 @@ public class IkObject : MonoBehaviour
         }
         if (logo == LogoChoice.Eye)
         {
-            KnobAnimator.SetBool("Eye", interactable);
+            KnobAnimator.SetBool("Eye", looked&&interactable);
         }
         if (logo == LogoChoice.Hand)
         {
-            KnobAnimator.SetBool("Hand", interactable);
+            KnobAnimator.SetBool("Hand", looked&&interactable);
         }
 
         if (interacted)
@@ -105,7 +109,7 @@ public class IkObject : MonoBehaviour
             
             if (!AnimBlock)
             {
-                if (bodyController.MoveDone == true)
+                if (bodyController.MoveDone == true || !MoveBody)
                 {
                     Anim.SetTrigger("Interact");
                     if (LaunchAnim)
@@ -115,7 +119,7 @@ public class IkObject : MonoBehaviour
                     AnimBlock = true;
                 }
 
-                if (LookAtTarget && bodyController.MoveDone == true)
+                if (LookAtTarget && (bodyController.MoveDone == true || !MoveBody))
                 {
                     LookAt();
                 }
@@ -125,7 +129,7 @@ public class IkObject : MonoBehaviour
 
     public void Interacted()
     {
-        if (interactable && InRange && !done)
+        if (interactable && looked && InRange && !done)
         {
             if (OneUse)
             {
@@ -192,6 +196,11 @@ public class IkObject : MonoBehaviour
         {
             InRange = false;
         }
+    }
+
+    public void RunFunction()
+    {
+        OtherFunctions.Invoke();
     }
 
     public void Release()

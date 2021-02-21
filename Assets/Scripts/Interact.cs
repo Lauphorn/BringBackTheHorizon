@@ -28,11 +28,11 @@ public class Interact : MonoBehaviour
             {
                 if(savedObject != null)
                 {
-                    savedObject.interactable = false;
+                    savedObject.looked = false;
                 }
 
                 savedObject = hit.transform.GetComponent<IkObject>();
-                savedObject.interactable = true;
+                savedObject.looked = true;
             }
 
 
@@ -46,7 +46,7 @@ public class Interact : MonoBehaviour
         {
             if(savedObject != null)
             {
-                savedObject.interactable = false;
+                savedObject.looked = false;
                 savedObject = null;
             }
         }
