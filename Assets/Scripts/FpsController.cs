@@ -48,6 +48,7 @@ public class FpsController : MonoBehaviour
     public float rotationDamping, moveDamping;
 
     public Animator Anim;
+    public bool InAnim;
 
     private void Start()
     {

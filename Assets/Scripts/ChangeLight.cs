@@ -6,9 +6,15 @@ public class ChangeLight : MonoBehaviour
 {
 
     public bool On;
+
+    public AudioClip ElecCoupée;
+    public string Voix;
+
     public List <Renderer> Emissive = new List<Renderer>();
     List <Color> emissiveColor = new List<Color>();
     List<Light> LightGO = new List<Light>();
+
+    bool VoiceDone;
 
     const string kEmissiveColor = "_EmissiveColor";
 
@@ -20,10 +26,27 @@ public class ChangeLight : MonoBehaviour
             emissiveColor.Add(Emissive[i].material.GetColor(kEmissiveColor));
             LightGO.Add(Emissive[i].GetComponentInChildren<Light>());
         }
+
+        if (Narration.Instance.Objects["Electricity"] == false)
+        {
+            On = false;
+        }
+
         if (On)
         {
-            On = !On;
-            SwitchLight();
+            for (int i = 0; i < Emissive.Count; i++)
+            {
+                LightGO[i].enabled = true;
+                Emissive[i].material.SetColor(kEmissiveColor, emissiveColor[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Emissive.Count; i++)
+            {
+                LightGO[i].enabled = false;
+                Emissive[i].material.SetColor("_EmissiveColor", Emissive[i].material.GetColor("_EmissiveColor") * 0);
+            }
         }
     }
 
@@ -35,6 +58,13 @@ public class ChangeLight : MonoBehaviour
 
     public void SwitchLight()
     {
+
+        if (Narration.Instance.Objects["Electricity"] == false && !VoiceDone)
+        {
+            Voice.Instance.LaunchVoice(ElecCoupée, Voix);
+            VoiceDone = true;
+        }
+
         if (On)
         {
             for (int i = 0; i < Emissive.Count; i++)
@@ -46,11 +76,13 @@ public class ChangeLight : MonoBehaviour
         }
         else
         {
-
-            for (int i = 0; i < Emissive.Count; i++)
+            if (Narration.Instance.Objects["Electricity"] == true)
             {
-                LightGO[i].enabled = true;
-                Emissive[i].material.SetColor(kEmissiveColor, emissiveColor[i]);
+                for (int i = 0; i < Emissive.Count; i++)
+                {
+                    LightGO[i].enabled = true;
+                    Emissive[i].material.SetColor(kEmissiveColor, emissiveColor[i]);
+                }
             }
             On = true;
         }

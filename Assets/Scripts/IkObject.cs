@@ -27,6 +27,18 @@ public class IkObject : MonoBehaviour
     public bool LaunchFunction;
     [ConditionalField("LaunchFunction")] public UnityEvent OtherFunctions;
 
+    public bool ChangeNarration;
+    [ConditionalField("ChangeNarration")] public string NarrationChangedString;
+
+    public bool NeedNarration;
+    [ConditionalField("NeedNarration")] public string NarrationNeededString;
+    bool NarrationNeededCheck;
+
+    public bool UseVoice;
+    public List<AudioClip> VoiceClip;
+    public List<string> VoiceLine;
+    [ConditionalField("UseVoice")] public int VoiceNumber;
+
 
     public bool MoveHands;
     [ConditionalField("MoveHands")] public bool MoveRightHand;
@@ -67,7 +79,7 @@ public class IkObject : MonoBehaviour
     {
         if (!interacted)
         {
-            KnobAnimator.SetBool("Show", InRange);
+            KnobAnimator.SetBool("Show", (InRange && !bodyController.InAnim));
         }
         else
         {
@@ -84,6 +96,9 @@ public class IkObject : MonoBehaviour
 
         if (interacted)
         {
+
+            bodyController.InAnim=true;
+
             if (Crouch)
             {
                 Handcontroller.CrouchWeight = CrouchWeight;
@@ -109,11 +124,18 @@ public class IkObject : MonoBehaviour
             
             if (!AnimBlock)
             {
+
                 if (bodyController.MoveDone == true || !MoveBody)
                 {
+                    if (NeedNarration)
+                    {
+                        NarrationNeededCheck = Narration.Instance.Objects[NarrationNeededString];
+                        Anim.SetBool("NarrationNeeded", NarrationNeededCheck);
+                    }
                     Anim.SetTrigger("Interact");
                     if (LaunchAnim)
                     {
+
                         Handcontroller.LaunchAnim(AnimBool);
                     }
                     AnimBlock = true;
@@ -198,9 +220,19 @@ public class IkObject : MonoBehaviour
         }
     }
 
+    public void LaunchVoice()
+    {
+        Voice.Instance.LaunchVoice(VoiceClip[VoiceNumber], VoiceLine[VoiceNumber]);
+    }
+
     public void RunFunction()
     {
         OtherFunctions.Invoke();
+    }
+
+    public void ChangeNarrat()
+    {
+        Narration.Instance.Objects[NarrationChangedString] = true;
     }
 
     public void Release()
@@ -220,12 +252,16 @@ public class IkObject : MonoBehaviour
         Handcontroller.RightHandWeight = 0;
 
         AnimBlock = false;
+
+        bodyController.InAnim=false;
     }
 
     public void Hold()
     {
         interacted = false;
         AnimBlock = false;
+
+        bodyController.InAnim= false;
     }
 
 

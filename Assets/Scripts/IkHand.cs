@@ -83,14 +83,14 @@ public class IkHand : MonoBehaviour
             if (RightHandTarget != null)
             {
                 //avatar.SetIKPositionWeight(AvatarIKGoal.RightHand, RightHandWeight);
-                avatar.SetIKRotationWeight(AvatarIKGoal.RightHand, RightHandWeight);
+                //avatar.SetIKRotationWeight(AvatarIKGoal.RightHand, RightHandWeight);
                 avatar.SetIKPosition(AvatarIKGoal.RightHand, RightHandTarget.position);
                 avatar.SetIKRotation(AvatarIKGoal.RightHand, RightHandTarget.rotation * Quaternion.Euler(-90, 90f, 0));
                 FullBodyIK.solver.rightHandEffector.target = RightHandTarget;
                 FullBodyIK.solver.rightHandEffector.positionWeight = RightHandWeight;
                 FullBodyIK.solver.rightHandEffector.rotationWeight = RightHandWeight;
-                FullBodyIK.solver.rightArmChain.bendConstraint.weight = RightHandWeight;
-                FullBodyIK.solver.rightArmMapping.weight = RightHandWeight;
+                //FullBodyIK.solver.rightArmChain.bendConstraint.weight = RightHandWeight;
+                //FullBodyIK.solver.rightArmMapping.weight = RightHandWeight;
             }
 
             if (MoveRFinger)
@@ -138,14 +138,14 @@ public class IkHand : MonoBehaviour
             if (LeftHandTarget != null)
             {
                 //avatar.SetIKPositionWeight(AvatarIKGoal.LeftHand, LeftHandWeight);
-                avatar.SetIKRotationWeight(AvatarIKGoal.LeftHand, LeftHandWeight);
+                //avatar.SetIKRotationWeight(AvatarIKGoal.LeftHand, LeftHandWeight);
                 avatar.SetIKPosition(AvatarIKGoal.LeftHand, LeftHandTarget.position);
                 avatar.SetIKRotation(AvatarIKGoal.LeftHand, LeftHandTarget.rotation * Quaternion.Euler(-90, -90f, 0));
                 FullBodyIK.solver.leftHandEffector.target = LeftHandTarget;
                 FullBodyIK.solver.leftHandEffector.positionWeight = LeftHandWeight;
                 FullBodyIK.solver.leftHandEffector.rotationWeight = LeftHandWeight;
-                FullBodyIK.solver.leftArmChain.bendConstraint.weight = LeftHandWeight;
-                FullBodyIK.solver.leftArmMapping.weight = LeftHandWeight;
+                //FullBodyIK.solver.leftArmChain.bendConstraint.weight = LeftHandWeight;
+                //FullBodyIK.solver.leftArmMapping.weight = LeftHandWeight;
             }
 
             if (MoveLFinger)
