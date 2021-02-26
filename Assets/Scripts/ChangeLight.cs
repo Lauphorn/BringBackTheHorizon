@@ -6,6 +6,7 @@ public class ChangeLight : MonoBehaviour
 {
 
     public bool On;
+    bool Done;
 
     public AudioClip ElecCoupée;
     public string Voix;
@@ -32,6 +33,7 @@ public class ChangeLight : MonoBehaviour
             On = false;
         }
 
+
         if (On)
         {
             for (int i = 0; i < Emissive.Count; i++)
@@ -53,7 +55,11 @@ public class ChangeLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!Done && Narration.Instance.Objects["Electricity"] == true)
+        {
+            SwitchLight();
+            Done = true;
+        }
     }
 
     public void SwitchLight()

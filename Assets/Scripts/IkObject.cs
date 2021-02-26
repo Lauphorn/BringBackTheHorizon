@@ -79,7 +79,7 @@ public class IkObject : MonoBehaviour
     {
         if (!interacted)
         {
-            KnobAnimator.SetBool("Show", (InRange && !bodyController.InAnim));
+            KnobAnimator.SetBool("Show", (InRange && !bodyController.InAnim && done !=true));
         }
         else
         {
