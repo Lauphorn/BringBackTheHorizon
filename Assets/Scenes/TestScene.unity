@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0011693103, g: 0.0009736398, b: 0.001036953, a: 1}
+  m_IndirectSpecularColor: {r: 0.0015145453, g: 0.0021462066, b: 0.0034889157, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5974,7 +5974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  On: 1
+  OnStart: 0
   "ElecCoup\xE9e": {fileID: 8300000, guid: 3e3cdb8f8eadfb74d9cbde517a4c6c1c, type: 3}
   Voix: I should put the fuses back on before doing anything  / It's too dark to
     see anyway
@@ -6261,7 +6261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  On: 0
+  OnStart: 0
   "ElecCoup\xE9e": {fileID: 8300000, guid: 3e3cdb8f8eadfb74d9cbde517a4c6c1c, type: 3}
   Voix: I should put the fuses back on before doing anything  / It's too dark to
     see anyway
@@ -9546,7 +9546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  On: 0
+  OnStart: 0
   "ElecCoup\xE9e": {fileID: 0}
   Voix: 
   Emissive:
@@ -10454,7 +10454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  On: 0
+  OnStart: 0
   "ElecCoup\xE9e": {fileID: 0}
   Voix: 
   Emissive:
@@ -30252,7 +30252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  On: 0
+  OnStart: 0
   "ElecCoup\xE9e": {fileID: 0}
   Voix: 
   Emissive:
@@ -30892,7 +30892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  On: 0
+  OnStart: 0
   "ElecCoup\xE9e": {fileID: 0}
   Voix: 
   Emissive:
@@ -33280,7 +33280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079690296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3800001, y: 0, z: -6.77}
+  m_LocalPosition: {x: 1.3800001, y: 0.025, z: -6.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 806834687}
@@ -35451,7 +35451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  On: 0
+  OnStart: 0
   "ElecCoup\xE9e": {fileID: 0}
   Voix: 
   Emissive:
@@ -41618,7 +41618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1061494120218328172, guid: ef1bfcb5c6b7266428295b04a5c9bf16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1061494120218328172, guid: ef1bfcb5c6b7266428295b04a5c9bf16, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -47796,7 +47796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651834057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3804754, y: 1.5159686, z: -6.6580167}
+  m_LocalPosition: {x: 1.3804754, y: 1.5409685, z: -6.6580167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 983005922}
@@ -52677,7 +52677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  On: 0
+  OnStart: 0
   "ElecCoup\xE9e": {fileID: 0}
   Voix: 
   Emissive:

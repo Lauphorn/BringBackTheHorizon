@@ -5,7 +5,8 @@ using UnityEngine;
 public class ChangeLight : MonoBehaviour
 {
 
-    public bool On;
+    public bool OnStart;
+    bool On;
     bool Done;
 
     public AudioClip ElecCoupée;
@@ -30,16 +31,17 @@ public class ChangeLight : MonoBehaviour
 
         if (Narration.Instance.Objects["Electricity"] == false)
         {
-            On = false;
+            OnStart = false;
         }
 
 
-        if (On)
+        if (OnStart)
         {
             for (int i = 0; i < Emissive.Count; i++)
             {
                 LightGO[i].enabled = true;
                 Emissive[i].material.SetColor(kEmissiveColor, emissiveColor[i]);
+                On = true;
             }
         }
         else
@@ -48,6 +50,7 @@ public class ChangeLight : MonoBehaviour
             {
                 LightGO[i].enabled = false;
                 Emissive[i].material.SetColor("_EmissiveColor", Emissive[i].material.GetColor("_EmissiveColor") * 0);
+                On = false;
             }
         }
     }
