@@ -79,20 +79,25 @@ public class IkObject : MonoBehaviour
     {
         if (!interacted)
         {
-            KnobAnimator.SetBool("Show", (InRange && !bodyController.InAnim && done !=true));
+            KnobAnimator.SetBool("Ball", (InRange && !bodyController.InAnim && done !=true));
         }
         else
         {
-            KnobAnimator.SetBool("Show", false);
+            KnobAnimator.SetBool("Ball", false);
         }
+
         if (logo == LogoChoice.Eye)
         {
-            KnobAnimator.SetBool("Eye", looked&&interactable);
+            KnobAnimator.SetBool("Eye", looked);
         }
         if (logo == LogoChoice.Hand)
         {
-            KnobAnimator.SetBool("Hand", looked&&interactable);
+            KnobAnimator.SetBool("Hand", looked);
         }
+        KnobAnimator.SetBool("Interactable", interactable);
+
+
+
 
         if (interacted)
         {
@@ -263,6 +268,4 @@ public class IkObject : MonoBehaviour
 
         bodyController.InAnim= false;
     }
-
-
 }
