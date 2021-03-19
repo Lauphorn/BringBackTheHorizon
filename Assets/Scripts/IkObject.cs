@@ -77,7 +77,8 @@ public class IkObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!interacted)
+        /*
+        if (!interacted && KnobAnimator.GetBool("Ball") == false)
         {
             KnobAnimator.SetBool("Ball", (InRange && !bodyController.InAnim && done !=true));
         }
@@ -85,18 +86,34 @@ public class IkObject : MonoBehaviour
         {
             KnobAnimator.SetBool("Ball", false);
         }
-
-        if (logo == LogoChoice.Eye)
+ 
+        if (logo == LogoChoice.Eye && KnobAnimator.GetBool("Eye") == false)
         {
             KnobAnimator.SetBool("Eye", looked);
         }
-        if (logo == LogoChoice.Hand)
+        else
+        {
+            KnobAnimator.SetBool("Eye", false);
+        }
+
+        if (logo == LogoChoice.Hand && KnobAnimator.GetBool("Hand") == false)
         {
             KnobAnimator.SetBool("Hand", looked);
         }
-        KnobAnimator.SetBool("Interactable", interactable);
+        else
+        {
+            KnobAnimator.SetBool("Hand", false);
+        }
 
-
+        if (interactable && KnobAnimator.GetBool("Interactable") == false)
+        {
+            KnobAnimator.SetBool("Interactable", true);
+        }
+        else
+        {
+            KnobAnimator.SetBool("Interactable", false);
+        }
+        */
 
 
         if (interacted)

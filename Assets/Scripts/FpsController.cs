@@ -129,7 +129,7 @@ public class FpsController : MonoBehaviour
         var direction = Vector3.zero;
         if (Vector3.Distance(transform.position, target.position) > distanceToStop)
         {
-            
+
             direction = target.position - transform.position;
             m_Rigidbody.AddRelativeForce(direction.normalized * speed, ForceMode.Force);
 
@@ -137,8 +137,8 @@ public class FpsController : MonoBehaviour
         }
         else
         {
+            m_Rigidbody.position = Vector3.MoveTowards(m_Rigidbody.position, target.position, 0.01f);
             MoveDone = true;
-            //m_Rigidbody.position = Vector3.Lerp(m_Rigidbody.position, target.position, 10 * Time.deltaTime);
         }
     }
 
@@ -150,7 +150,7 @@ public class FpsController : MonoBehaviour
         }
         else
         {
-            FollowTargetWitouthRotation(BodyFollowPosition, 0.2f, 10f);
+            FollowTargetWitouthRotation(BodyFollowPosition, 0.05f, 8f);
         }
 
         if (m_Rigidbody.useGravity)
