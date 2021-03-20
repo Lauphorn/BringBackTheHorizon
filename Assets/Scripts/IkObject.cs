@@ -35,21 +35,24 @@ public class IkObject : MonoBehaviour
     bool NarrationNeededCheck;
 
     public bool UseVoice;
-    public List<AudioClip> VoiceClip;
-    public List<string> VoiceLine;
+    [ConditionalField("UseVoice")] public List<AudioClip> VoiceClip;
+    [ConditionalField("UseVoice")] public List<string> VoiceLine;
     [ConditionalField("UseVoice")] public int VoiceNumber;
 
+    public bool GrabObject;
+    [ConditionalField("GrabObject")] public Transform ObjectGrabbed;
+    [ConditionalField("GrabObject")] public Transform GrabbingHand;
 
     public bool MoveHands;
     [ConditionalField("MoveHands")] public bool MoveRightHand;
     [ConditionalField("MoveRightHand")] public Transform RightHandFollowPosition;
-    [ConditionalField("MoveRightHand")] public HandLineRenderer RightHand;
+    [ConditionalField("MoveRightHand")] HandLineRenderer RightHand;
     [ConditionalField("MoveRightHand")] public float RightHandWeight;
 
 
     [ConditionalField("MoveHands")] public bool MoveLefttHand;
     [ConditionalField("MoveLefttHand")] public Transform LeftHandFollowPosition;
-    [ConditionalField("MoveLefttHand")] public HandLineRenderer LeftHand;
+    [ConditionalField("MoveLefttHand")] HandLineRenderer LeftHand;
     [ConditionalField("MoveLefttHand")] public float LeftHandWeight;
 
     public enum LogoChoice
@@ -69,6 +72,15 @@ public class IkObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (MoveRightHand)
+        {
+            RightHand = RightHandFollowPosition.GetComponent<HandLineRenderer>();
+        }
+        if (MoveLefttHand)
+        {
+            LeftHand = LeftHandFollowPosition.GetComponent<HandLineRenderer>();
+        }
+
         bodyController = FpsController.Instance;
         cameraController = CameraController.Instance;
         Handcontroller = IkHand.Instance;
@@ -264,5 +276,9 @@ public class IkObject : MonoBehaviour
         bodyController.InAnim= false;
     }
 
+    public void Grab()
+    {
+        ObjectGrabbed.SetParent(GrabbingHand, true);
+    }
 
 }
