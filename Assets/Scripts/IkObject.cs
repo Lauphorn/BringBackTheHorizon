@@ -35,24 +35,21 @@ public class IkObject : MonoBehaviour
     bool NarrationNeededCheck;
 
     public bool UseVoice;
-    [ConditionalField("UseVoice")] public List<AudioClip> VoiceClip;
-    [ConditionalField("UseVoice")] public List<string> VoiceLine;
+    public List<AudioClip> VoiceClip;
+    public List<string> VoiceLine;
     [ConditionalField("UseVoice")] public int VoiceNumber;
 
-    public bool GrabObject;
-    [ConditionalField("GrabObject")] public Transform ObjectGrabbed;
-    [ConditionalField("GrabObject")] public Transform GrabbingHand;
 
     public bool MoveHands;
     [ConditionalField("MoveHands")] public bool MoveRightHand;
     [ConditionalField("MoveRightHand")] public Transform RightHandFollowPosition;
-    [ConditionalField("MoveRightHand")] HandLineRenderer RightHand;
+    [ConditionalField("MoveRightHand")] public HandLineRenderer RightHand;
     [ConditionalField("MoveRightHand")] public float RightHandWeight;
 
 
     [ConditionalField("MoveHands")] public bool MoveLefttHand;
     [ConditionalField("MoveLefttHand")] public Transform LeftHandFollowPosition;
-    [ConditionalField("MoveLefttHand")] HandLineRenderer LeftHand;
+    [ConditionalField("MoveLefttHand")] public HandLineRenderer LeftHand;
     [ConditionalField("MoveLefttHand")] public float LeftHandWeight;
 
     public enum LogoChoice
@@ -72,15 +69,6 @@ public class IkObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (MoveRightHand)
-        {
-            RightHand = RightHandFollowPosition.GetComponent<HandLineRenderer>();
-        }
-        if (MoveLefttHand)
-        {
-            LeftHand = LeftHandFollowPosition.GetComponent<HandLineRenderer>();
-        }
-
         bodyController = FpsController.Instance;
         cameraController = CameraController.Instance;
         Handcontroller = IkHand.Instance;
@@ -89,22 +77,44 @@ public class IkObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!interacted)
+        /*
+        if (!interacted && KnobAnimator.GetBool("Ball") == false)
         {
-            KnobAnimator.SetBool("Show", (InRange && !bodyController.InAnim && done !=true));
+            KnobAnimator.SetBool("Ball", (InRange && !bodyController.InAnim && done !=true));
         }
         else
         {
-            KnobAnimator.SetBool("Show", false);
+            KnobAnimator.SetBool("Ball", false);
         }
-        if (logo == LogoChoice.Eye)
+ 
+        if (logo == LogoChoice.Eye && KnobAnimator.GetBool("Eye") == false)
         {
-            KnobAnimator.SetBool("Eye", looked&&interactable);
+            KnobAnimator.SetBool("Eye", looked);
         }
-        if (logo == LogoChoice.Hand)
+        else
         {
-            KnobAnimator.SetBool("Hand", looked&&interactable);
+            KnobAnimator.SetBool("Eye", false);
         }
+
+        if (logo == LogoChoice.Hand && KnobAnimator.GetBool("Hand") == false)
+        {
+            KnobAnimator.SetBool("Hand", looked);
+        }
+        else
+        {
+            KnobAnimator.SetBool("Hand", false);
+        }
+
+        if (interactable && KnobAnimator.GetBool("Interactable") == false)
+        {
+            KnobAnimator.SetBool("Interactable", true);
+        }
+        else
+        {
+            KnobAnimator.SetBool("Interactable", false);
+        }
+        */
+
 
         if (interacted)
         {
@@ -275,10 +285,4 @@ public class IkObject : MonoBehaviour
 
         bodyController.InAnim= false;
     }
-
-    public void Grab()
-    {
-        ObjectGrabbed.SetParent(GrabbingHand, true);
-    }
-
 }

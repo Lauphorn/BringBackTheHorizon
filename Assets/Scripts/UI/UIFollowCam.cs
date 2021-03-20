@@ -14,5 +14,6 @@ public class UIFollowCam : MonoBehaviour
     void Update()
     {
         transform.rotation = Cam.rotation;
+        transform.localScale = new Vector3(Vector3.Distance(transform.position, Cam.position)*1.5f, Vector3.Distance(transform.position, Cam.position)*1.5f,1);
     }
 }
