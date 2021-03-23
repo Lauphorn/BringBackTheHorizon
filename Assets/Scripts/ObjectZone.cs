@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectZone : MonoBehaviour
 {
-    public IkObject obj;
+    public InteractableObject obj;
     // Start is called before the first frame update
     void Start()
     {

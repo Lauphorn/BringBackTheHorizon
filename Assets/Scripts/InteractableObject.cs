@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 using UnityEngine.Events;
-public class IkObject : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
 
     FpsController bodyController;
@@ -11,6 +11,12 @@ public class IkObject : MonoBehaviour
     IkHand Handcontroller;
 
     public bool OneUse;
+
+    public bool Activated;
+
+    public bool NeedActivation;
+    [ConditionalField("NeedActivation")] public InteractableObject ParentObject;
+    bool ParentActivated;
 
     public bool MoveBody;
     [ConditionalField("MoveBody")] public Transform BodyFollowPosition;
@@ -39,17 +45,20 @@ public class IkObject : MonoBehaviour
     public List<string> VoiceLine;
     [ConditionalField("UseVoice")] public int VoiceNumber;
 
+    public bool GrabObject;
+    [ConditionalField("GrabObject")] public Transform ObjectGrabbed;
+    [ConditionalField("GrabObject")] public Transform GrabbingHand;
 
     public bool MoveHands;
     [ConditionalField("MoveHands")] public bool MoveRightHand;
-    [ConditionalField("MoveRightHand")] public Transform RightHandFollowPosition;
-    [ConditionalField("MoveRightHand")] public HandLineRenderer RightHand;
+    [ConditionalField("MoveRightHand")] public Transform RightHand;
+    [ConditionalField("MoveRightHand")] HandLineRenderer RightHandRenderer;
     [ConditionalField("MoveRightHand")] public float RightHandWeight;
 
 
     [ConditionalField("MoveHands")] public bool MoveLefttHand;
-    [ConditionalField("MoveLefttHand")] public Transform LeftHandFollowPosition;
-    [ConditionalField("MoveLefttHand")] public HandLineRenderer LeftHand;
+    [ConditionalField("MoveLefttHand")] public Transform LeftHand;
+    [ConditionalField("MoveLefttHand")] HandLineRenderer LeftHandRenderer;
     [ConditionalField("MoveLefttHand")] public float LeftHandWeight;
 
     public enum LogoChoice
@@ -69,51 +78,79 @@ public class IkObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        KnobAnimator = transform.Find("UiInteraction").transform.GetComponent<Animator>();
+
+
         bodyController = FpsController.Instance;
         cameraController = CameraController.Instance;
         Handcontroller = IkHand.Instance;
+
+        if (NeedActivation)
+        {
+            ParentActivated = false;
+        }
+        else
+        {
+            ParentActivated = true;
+        }
+
+        if (RightHand !=null)
+        {
+            RightHandRenderer = RightHand.GetComponent<HandLineRenderer>();
+        }
+        if (LeftHand != null)
+        {
+            LeftHandRenderer = LeftHand.GetComponent<HandLineRenderer>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (!interacted && KnobAnimator.GetBool("Ball") == false)
+
+        if(KnobAnimator != null && ParentActivated)
         {
-            KnobAnimator.SetBool("Ball", (InRange && !bodyController.InAnim && done !=true));
-        }
-        else
-        {
-            KnobAnimator.SetBool("Ball", false);
-        }
- 
-        if (logo == LogoChoice.Eye && KnobAnimator.GetBool("Eye") == false)
-        {
-            KnobAnimator.SetBool("Eye", looked);
-        }
-        else
-        {
-            KnobAnimator.SetBool("Eye", false);
+            if (InRange && !bodyController.InAnim)
+            {
+                KnobAnimator.SetBool("Ball", true);
+            }
+            else
+            {
+                KnobAnimator.SetBool("Ball", false);
+            }
+
+            if (logo == LogoChoice.Eye && looked)
+            {
+                KnobAnimator.SetBool("Eye", true);
+            }
+            else
+            {
+                KnobAnimator.SetBool("Eye", false);
+            }
+
+            if (logo == LogoChoice.Hand && looked)
+            {
+                KnobAnimator.SetBool("Hand", true);
+            }
+            else
+            {
+                KnobAnimator.SetBool("Hand", false);
+            }
+
+            if (interactable)
+            {
+                KnobAnimator.SetBool("Interactable", true);
+            }
+            else
+            {
+                KnobAnimator.SetBool("Interactable", false);
+            }
         }
 
-        if (logo == LogoChoice.Hand && KnobAnimator.GetBool("Hand") == false)
+        if (NeedActivation)
         {
-            KnobAnimator.SetBool("Hand", looked);
-        }
-        else
-        {
-            KnobAnimator.SetBool("Hand", false);
-        }
-
-        if (interactable && KnobAnimator.GetBool("Interactable") == false)
-        {
-            KnobAnimator.SetBool("Interactable", true);
-        }
-        else
-        {
-            KnobAnimator.SetBool("Interactable", false);
-        }
-        */
+            ParentActivated = ParentObject.Activated;
+        }    
 
 
         if (interacted)
@@ -173,7 +210,7 @@ public class IkObject : MonoBehaviour
 
     public void Interacted()
     {
-        if (interactable && looked && InRange && !done)
+        if (interactable && looked && InRange && !done && ParentActivated)
         {
             if (OneUse)
             {
@@ -199,25 +236,25 @@ public class IkObject : MonoBehaviour
     void MoveRHand()
     {
         Handcontroller.MoveRFinger = true;
-        Handcontroller.RightHandTarget = RightHandFollowPosition;
+        Handcontroller.RightHandTarget = RightHand;
 
-        Handcontroller.RPouce = RightHand.Pouce.transform;
-        Handcontroller.RIndex = RightHand.Index.transform;
-        Handcontroller.RMajeur = RightHand.Majeur.transform;
-        Handcontroller.RAnnulaire = RightHand.Annulaire.transform;
-        Handcontroller.RAuriculaire = RightHand.Auriculaire.transform;
+        Handcontroller.RPouce = RightHandRenderer.Pouce.transform;
+        Handcontroller.RIndex = RightHandRenderer.Index.transform;
+        Handcontroller.RMajeur = RightHandRenderer.Majeur.transform;
+        Handcontroller.RAnnulaire = RightHandRenderer.Annulaire.transform;
+        Handcontroller.RAuriculaire = RightHandRenderer.Auriculaire.transform;
     }
 
     void MoveLHand()
     {
         Handcontroller.MoveLFinger = true;
-        Handcontroller.LeftHandTarget = LeftHandFollowPosition;
+        Handcontroller.LeftHandTarget = LeftHand;
 
-        Handcontroller.LPouce = LeftHand.Pouce.transform;
-        Handcontroller.LIndex = LeftHand.Index.transform;
-        Handcontroller.LMajeur = LeftHand.Majeur.transform;
-        Handcontroller.LAnnulaire = LeftHand.Annulaire.transform;
-        Handcontroller.LAuriculaire = LeftHand.Auriculaire.transform;
+        Handcontroller.LPouce = LeftHandRenderer.Pouce.transform;
+        Handcontroller.LIndex = LeftHandRenderer.Index.transform;
+        Handcontroller.LMajeur = LeftHandRenderer.Majeur.transform;
+        Handcontroller.LAnnulaire = LeftHandRenderer.Annulaire.transform;
+        Handcontroller.LAuriculaire = LeftHandRenderer.Auriculaire.transform;
     }
 
     void LookAt()
@@ -284,5 +321,10 @@ public class IkObject : MonoBehaviour
         AnimBlock = false;
 
         bodyController.InAnim= false;
+    }
+
+    public void Grab()
+    {
+        ObjectGrabbed.SetParent(GrabbingHand, true);
     }
 }

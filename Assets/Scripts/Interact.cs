@@ -7,7 +7,7 @@ public class Interact : MonoBehaviour
 
     public Camera mCam;
     int layer_mask;
-    IkObject savedObject;
+    InteractableObject savedObject;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +24,14 @@ public class Interact : MonoBehaviour
 
         if (Physics.Raycast(mCam.transform.position, mCam.transform.forward, out hit, 100.0f, layer_mask) && hit.collider.tag == "Item")
         {
-            if(savedObject != hit.transform.GetComponent<IkObject>())
+            if(savedObject != hit.transform.GetComponent<InteractableObject>())
             {
                 if(savedObject != null)
                 {
                     savedObject.looked = false;
                 }
 
-                savedObject = hit.transform.GetComponent<IkObject>();
+                savedObject = hit.transform.GetComponent<InteractableObject>();
                 savedObject.looked = true;
             }
 
@@ -39,7 +39,7 @@ public class Interact : MonoBehaviour
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("Hit Printing Press");
-                hit.transform.GetComponent<IkObject>().Interacted();
+                hit.transform.GetComponent<InteractableObject>().Interacted();
             }
         }
         else
