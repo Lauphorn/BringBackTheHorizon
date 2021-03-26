@@ -88,7 +88,6 @@ public class FpsController : MonoBehaviour
             {
                 RRot = true;
                 Anim.SetBool("TurnRight", true);
-                Rotation.rotation = Quaternion.Slerp(Rotation.rotation, Cam.rotation, rotationDamping/2);
             }
             else
             {
@@ -100,7 +99,6 @@ public class FpsController : MonoBehaviour
             {
                 LRot = true;
                 Anim.SetBool("TurnLeft", true);
-                Rotation.rotation = Quaternion.Slerp(Rotation.rotation, Cam.rotation, rotationDamping/2);
             }
             else
             {
@@ -139,6 +137,7 @@ public class FpsController : MonoBehaviour
         {
             m_Rigidbody.position = Vector3.MoveTowards(m_Rigidbody.position, target.position, 0.01f);
             MoveDone = true;
+
         }
     }
 
@@ -151,11 +150,25 @@ public class FpsController : MonoBehaviour
         else
         {
             FollowTargetWitouthRotation(BodyFollowPosition, 0.05f, 8f);
+
         }
 
         if (m_Rigidbody.useGravity)
         {
             m_Rigidbody.AddForce(Physics.gravity * 10, ForceMode.Acceleration);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (BlockMove)
+        {
+            Rotation.rotation = Quaternion.RotateTowards(Rotation.rotation, Cam.rotation, 2);
+        }
+
+        if (RRot || LRot)
+        {
+            Rotation.rotation = Quaternion.Slerp(Rotation.rotation, Cam.rotation, 0.1f);
         }
     }
 

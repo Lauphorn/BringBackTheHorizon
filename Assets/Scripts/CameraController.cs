@@ -102,6 +102,9 @@ public class CameraController : MonoBehaviour
             m_CameraTargetRot = Quaternion.Euler(_lookRotation.eulerAngles.x, cam.localRotation.eulerAngles.y, cam.localRotation.eulerAngles.z);
             cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot, 2 * Time.deltaTime);
 
+            m_CameraTargetRot = cam.localRotation;
+            m_CharacterTargetRot = characterRotation.rotation;
+
         }
    
     }
