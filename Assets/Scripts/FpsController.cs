@@ -65,6 +65,10 @@ public class FpsController : MonoBehaviour
             Move();
             MoveDone = false;
         }
+        else
+        {
+            FollowTargetWitouthRotation(BodyFollowPosition, 0.2f, 4f);
+        }
 
 
         CheckStair();
@@ -135,7 +139,7 @@ public class FpsController : MonoBehaviour
         }
         else
         {
-            m_Rigidbody.position = Vector3.MoveTowards(m_Rigidbody.position, target.position, 0.01f);
+            m_Rigidbody.position = Vector3.MoveTowards(m_Rigidbody.position, target.position, 0.005f);
             MoveDone = true;
 
         }
@@ -149,7 +153,6 @@ public class FpsController : MonoBehaviour
         }
         else
         {
-            FollowTargetWitouthRotation(BodyFollowPosition, 0.05f, 8f);
 
         }
 
