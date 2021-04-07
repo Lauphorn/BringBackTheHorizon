@@ -36,7 +36,7 @@ public class Interact : MonoBehaviour
             }
 
 
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && !FpsController.Instance.InAnim)
             {
                 Debug.Log("Hit Printing Press");
                 hit.transform.GetComponent<InteractableObject>().Interacted();

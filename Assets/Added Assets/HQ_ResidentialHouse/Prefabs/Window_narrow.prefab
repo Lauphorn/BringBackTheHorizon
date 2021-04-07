@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 2386846}
   - component: {fileID: 6572382}
   - component: {fileID: 6487128}
-  - component: {fileID: 11174480}
-  - component: {fileID: 11403296}
   m_Layer: 0
   m_Name: Leaf
   m_TagString: Untagged
@@ -114,63 +112,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 59f384783ea41804d975d885f2b689c6, type: 3}
---- !u!111 &11174480
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106862}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 447ce9edb131c504598794a447a2abaa, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 447ce9edb131c504598794a447a2abaa, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!114 &11403296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6531421bd49bc4ba44e586502382a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerHeadTag: MainCamera
-  knob: {fileID: 0}
-  controls:
-    openingSpeed: 1
-    closingSpeed: 1
-    closeStartFrom: 1
-    openMethod: 0
-    openButton: 101
-    autoClose: 0
-  AnimationNames:
-    OpeningAnim: Window_open
-    LockedAnim: Door_locked
-  doorSounds:
-    enabled: 1
-    open: {fileID: 8300000, guid: ea7d675fae80114439e3dbc305a099af, type: 3}
-    close: {fileID: 8300000, guid: 6427f56e53a25cb4baad158c6bd6aa67, type: 3}
-    closed: {fileID: 0}
-    volume: 1
-    pitchRandom: 0.2
-  doorTexts:
-    enabled: 1
-    openingText: Press [BUTTON] to open
-    closingText: Press [BUTTON] to close
-    lockText: You need a key!
-    TextPrefab: {fileID: 196946, guid: 449c88c761914d5428550f871a1d6272, type: 3}
-  keySystem:
-    enabled: 0
-    isUnlock: 0
-    LockPrefab: {fileID: 0}
 --- !u!1 &111824
 GameObject:
   m_ObjectHideFlags: 0

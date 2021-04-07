@@ -50,16 +50,14 @@ public class InteractableObject : MonoBehaviour
     [ConditionalField("GrabObject")] public Transform GrabbingHand;
 
     public bool MoveHands;
-    [ConditionalField("MoveHands")] public bool MoveRightHand;
-    [ConditionalField("MoveRightHand")] public Transform RightHand;
-    [ConditionalField("MoveRightHand")] HandLineRenderer RightHandRenderer;
-    [ConditionalField("MoveRightHand")] public float RightHandWeight;
-
-
-    [ConditionalField("MoveHands")] public bool MoveLefttHand;
-    [ConditionalField("MoveLefttHand")] public Transform LeftHand;
-    [ConditionalField("MoveLefttHand")] HandLineRenderer LeftHandRenderer;
-    [ConditionalField("MoveLefttHand")] public float LeftHandWeight;
+    [ConditionalField("MoveHands")] public BodyHandHolder HandsHolder;
+    
+    HandLineRenderer RightHandRenderer;
+    GameObject RightHand;
+    [ConditionalField("MoveHands")] public float RightHandWeight;
+    HandLineRenderer LeftHandRenderer;
+    GameObject LeftHand;
+    [ConditionalField("MoveHands")] public float LeftHandWeight;
 
     public enum LogoChoice
     {
@@ -94,13 +92,12 @@ public class InteractableObject : MonoBehaviour
             ParentActivated = true;
         }
 
-        if (RightHand !=null)
+        if (MoveHands)
         {
-            RightHandRenderer = RightHand.GetComponent<HandLineRenderer>();
-        }
-        if (LeftHand != null)
-        {
-            LeftHandRenderer = LeftHand.GetComponent<HandLineRenderer>();
+            RightHandRenderer = HandsHolder.RightHand.GetComponent<HandLineRenderer>();
+            RightHand = HandsHolder.RightHand;
+            LeftHandRenderer = HandsHolder.LeftHand.GetComponent<HandLineRenderer>();
+            LeftHand = HandsHolder.LeftHand;
         }
     }
 
@@ -110,7 +107,7 @@ public class InteractableObject : MonoBehaviour
 
         if(KnobAnimator != null && ParentActivated)
         {
-            if (InRange && !bodyController.InAnim)
+            if (InRange && !bodyController.InAnim && !done)
             {
                 KnobAnimator.SetBool("Ball", true);
             }
@@ -171,14 +168,8 @@ public class InteractableObject : MonoBehaviour
 
             if (MoveHands)
             {
-                if (MoveLefttHand)
-                {
-                    Handcontroller.LeftHandWeight = LeftHandWeight;
-                }
-                if (MoveRightHand)
-                {
-                    Handcontroller.RightHandWeight = RightHandWeight;
-                }
+                Handcontroller.LeftHandWeight = LeftHandWeight;
+                Handcontroller.RightHandWeight = RightHandWeight;
             }
             
             if (!AnimBlock)
@@ -221,14 +212,8 @@ public class InteractableObject : MonoBehaviour
 
             if (MoveHands)
             {
-                if (MoveRightHand)
-                {
-                    MoveRHand();
-                }
-                if (MoveLefttHand)
-                {
-                    MoveLHand();
-                }
+                MoveRHand();
+                MoveLHand();
             }
         }
     }
@@ -236,7 +221,7 @@ public class InteractableObject : MonoBehaviour
     void MoveRHand()
     {
         Handcontroller.MoveRFinger = true;
-        Handcontroller.RightHandTarget = RightHand;
+        Handcontroller.RightHandTarget = RightHand.transform;
 
         Handcontroller.RPouce = RightHandRenderer.Pouce.transform;
         Handcontroller.RIndex = RightHandRenderer.Index.transform;
@@ -248,7 +233,7 @@ public class InteractableObject : MonoBehaviour
     void MoveLHand()
     {
         Handcontroller.MoveLFinger = true;
-        Handcontroller.LeftHandTarget = LeftHand;
+        Handcontroller.LeftHandTarget = LeftHand.transform;
 
         Handcontroller.LPouce = LeftHandRenderer.Pouce.transform;
         Handcontroller.LIndex = LeftHandRenderer.Index.transform;
@@ -313,6 +298,7 @@ public class InteractableObject : MonoBehaviour
         AnimBlock = false;
 
         bodyController.InAnim=false;
+
     }
 
     public void Hold()
@@ -326,5 +312,10 @@ public class InteractableObject : MonoBehaviour
     public void Grab()
     {
         ObjectGrabbed.SetParent(GrabbingHand, true);
+    }
+
+    public void SwitchActivation()
+    {
+        Activated = !Activated;
     }
 }

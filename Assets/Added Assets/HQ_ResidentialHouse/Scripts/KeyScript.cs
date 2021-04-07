@@ -19,8 +19,6 @@ public class KeyScript : MonoBehaviour {
 		}
 	}
 	void GetKey(){
-		DoorScript doorScript = Door.GetComponent<DoorScript> ();
-		doorScript.keySystem.isUnlock = true;
 		Destroy (gameObject);
 	}
 }
