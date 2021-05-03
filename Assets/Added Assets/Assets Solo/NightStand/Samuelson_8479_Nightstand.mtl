@@ -1,0 +1,58 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 16.06.2017 15:35:17
+
+newmtl Samuelson_8479_Nightstand_mtl_1
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.8431 0.8235 0.7882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka dcmap_Samuelson_8479-Nightstand_diff.jpg
+	map_Kd dcmap_Samuelson_8479-Nightstand_diff.jpg
+	map_bump dcmap_Samuelson_8479-Nightstand_bump.jpg
+	bump dcmap_Samuelson_8479-Nightstand_bump.jpg
+
+newmtl Samuelson_8479_Nightstand_mtl_2
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.4157 0.3686 0.3294
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_bump dcmap_Samuelson_8479-Nightstand_bump(1).jpg
+	bump dcmap_Samuelson_8479-Nightstand_bump(1).jpg
+
+newmtl Samuelson_8479_Nightstand_mtl_3
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.8627 0.7098 0.5294
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_bump dcmap_Samuelson_8479-Nightstand_bump(2).jpg
+	bump dcmap_Samuelson_8479-Nightstand_bump(2).jpg
+
+newmtl Samuelson_8479_Nightstand_mtl_4
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
