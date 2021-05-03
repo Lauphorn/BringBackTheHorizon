@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 2d6b26fd7675d134f9c92fd43946555b
+timeCreated: 1483636447
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: low
+    100002: low01
+    100004: low02
+    100006: //RootNode
+    100008: Sofa_Pillow
+    100010: lol
+    100012: Sofa_House_A
+    100014: Sofa_House_A01
+    100016: Sofa_House_B
+    100018: Sofa_House_Corner_L
+    100020: Sofa_House_Corner_R
+    100022: lol01
+    100024: Sofa_Cushion_A
+    100026: Sofa_Cushion_B
+    100028: Sofa_House_Continuation
+    100030: Sofa_House_Stool
+    400000: low
+    400002: low01
+    400004: low02
+    400006: //RootNode
+    400008: Sofa_Pillow
+    400010: lol
+    400012: Sofa_House_A
+    400014: Sofa_House_A01
+    400016: Sofa_House_B
+    400018: Sofa_House_Corner_L
+    400020: Sofa_House_Corner_R
+    400022: lol01
+    400024: Sofa_Cushion_A
+    400026: Sofa_Cushion_B
+    400028: Sofa_House_Continuation
+    400030: Sofa_House_Stool
+    2300000: low
+    2300002: low01
+    2300004: low02
+    2300006: Sofa_Pillow
+    2300008: lol
+    2300010: Sofa_House_A
+    2300012: Sofa_House_A01
+    2300014: Sofa_House_B
+    2300016: Sofa_House_Corner_L
+    2300018: Sofa_House_Corner_R
+    2300020: lol01
+    2300022: Sofa_Cushion_A
+    2300024: Sofa_Cushion_B
+    2300026: Sofa_House_Continuation
+    2300028: Sofa_House_Stool
+    3300000: low
+    3300002: low01
+    3300004: low02
+    3300006: Sofa_Pillow
+    3300008: lol
+    3300010: Sofa_House_A
+    3300012: Sofa_House_A01
+    3300014: Sofa_House_B
+    3300016: Sofa_House_Corner_L
+    3300018: Sofa_House_Corner_R
+    3300020: lol01
+    3300022: Sofa_Cushion_A
+    3300024: Sofa_Cushion_B
+    3300026: Sofa_House_Continuation
+    3300028: Sofa_House_Stool
+    4300000: low
+    4300002: Sofa_Pillow
+    4300004: low01
+    4300006: low02
+    4300008: Sofa_House_B
+    4300010: Sofa_House_A
+    4300012: Sofa_House_Corner_R
+    4300014: Sofa_House_Corner_L
+    4300016: Sofa_House_A01
+    4300018: lol
+    4300020: lol01
+    4300022: Sofa_Cushion_A
+    4300024: Sofa_Cushion_B
+    4300026: Sofa_House_Continuation
+    4300028: Sofa_House_Stool
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 2
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

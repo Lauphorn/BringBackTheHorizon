@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 3d793c561f011fe46915510fa41591b2
+timeCreated: 1485019066
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: asd
+    100004: WorkDesk
+    100006: Drawer
+    100008: Drawer01
+    100010: Drawer02
+    100012: Drawer03
+    100014: asd01
+    100016: WorkDesk01
+    100018: WorkDesk02
+    100020: asd02
+    100022: Drawer_A
+    100024: Drawer_B
+    100026: Drawer_C
+    100028: Drawer_D
+    100030: WorkDesk_Up_Door_L
+    100032: WorkDesk_Up_Door_R
+    100034: WorkDesk_Upper
+    100036: WorkDesk_Door
+    400000: //RootNode
+    400002: asd
+    400004: WorkDesk
+    400006: Drawer
+    400008: Drawer01
+    400010: Drawer02
+    400012: Drawer03
+    400014: asd01
+    400016: WorkDesk01
+    400018: WorkDesk02
+    400020: asd02
+    400022: Drawer_A
+    400024: Drawer_B
+    400026: Drawer_C
+    400028: Drawer_D
+    400030: WorkDesk_Up_Door_L
+    400032: WorkDesk_Up_Door_R
+    400034: WorkDesk_Upper
+    400036: WorkDesk_Door
+    2300000: //RootNode
+    2300002: asd
+    2300004: WorkDesk
+    2300006: Drawer
+    2300008: Drawer01
+    2300010: Drawer02
+    2300012: Drawer03
+    2300014: asd01
+    2300016: WorkDesk01
+    2300018: WorkDesk02
+    2300020: asd02
+    2300022: Drawer_A
+    2300024: Drawer_B
+    2300026: Drawer_C
+    2300028: Drawer_D
+    2300030: WorkDesk_Up_Door_L
+    2300032: WorkDesk_Up_Door_R
+    2300034: WorkDesk_Upper
+    2300036: WorkDesk_Door
+    3300000: //RootNode
+    3300002: asd
+    3300004: WorkDesk
+    3300006: Drawer
+    3300008: Drawer01
+    3300010: Drawer02
+    3300012: Drawer03
+    3300014: asd01
+    3300016: WorkDesk01
+    3300018: WorkDesk02
+    3300020: asd02
+    3300022: Drawer_A
+    3300024: Drawer_B
+    3300026: Drawer_C
+    3300028: Drawer_D
+    3300030: WorkDesk_Up_Door_L
+    3300032: WorkDesk_Up_Door_R
+    3300034: WorkDesk_Upper
+    3300036: WorkDesk_Door
+    4300000: WorkDesk
+    4300002: asd
+    4300004: Drawer
+    4300006: Drawer01
+    4300008: Drawer02
+    4300010: Drawer03
+    4300012: WorkDesk01
+    4300014: asd01
+    4300016: WorkDesk02
+    4300018: asd02
+    4300020: Drawer_A
+    4300022: Drawer_B
+    4300024: Drawer_C
+    4300026: Drawer_D
+    4300028: WorkDesk_Upper
+    4300030: WorkDesk_Up_Door_R
+    4300032: WorkDesk_Up_Door_L
+    4300034: WorkDesk_Door
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 2
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
