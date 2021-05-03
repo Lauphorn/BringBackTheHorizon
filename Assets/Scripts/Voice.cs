@@ -24,6 +24,8 @@ public class Voice : MonoBehaviour
     public TextMeshProUGUI STitreUi;
     string STitre;
 
+    bool IsPlaying;
+
 
     public bool Delayed;
     public AudioClip AClipDelayed;
@@ -38,7 +40,7 @@ public class Voice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!ASource.isPlaying && Delayed)
+        if (!IsPlaying && Delayed)
         {
             LaunchVoice(AClipDelayed, STitreDelayed);
             Delayed = false;
@@ -47,7 +49,7 @@ public class Voice : MonoBehaviour
 
     public void LaunchVoice(AudioClip Voix, string SousTitre)
     {
-        if (!ASource.isPlaying)
+        if (!IsPlaying)
         {
             ASource.PlayOneShot(Voix);
             STitre = SousTitre;
@@ -66,6 +68,7 @@ public class Voice : MonoBehaviour
     {
         foreach (char c in STitre)
         {
+            IsPlaying = true;
             if(c == '/')
             {
                 yield return new WaitForSeconds(0.5f);
@@ -79,5 +82,6 @@ public class Voice : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         STitreUi.text = "";
+        IsPlaying = false;
     }
 }
