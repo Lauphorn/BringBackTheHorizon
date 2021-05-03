@@ -5,6 +5,10 @@ using UnityEngine;
 /// Hierarchy window game object icon.
 /// http://diegogiacomelli.com.br/unitytips-hierarchy-window-gameobject-icon/
 /// </summary>
+/// 
+
+#if UNITY_EDITOR
+
 [InitializeOnLoad]
 public static class HierarchyWindowGameObjectIcon
 {
@@ -24,3 +28,4 @@ public static class HierarchyWindowGameObjectIcon
 
     }
 }
+#endif
