@@ -25,6 +25,10 @@ public class IkHand : MonoBehaviour
     public FullBodyBipedIK FullBodyIK;
     public float CrouchWeight;
 
+    public AnimationCurve myCurve;
+    //float y = this.myCurve.Evaluate(x);
+
+
     public Transform RightHandTarget;
     public float RightHandWeight;
 
