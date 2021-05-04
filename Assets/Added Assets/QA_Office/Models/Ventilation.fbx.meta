@@ -1,0 +1,131 @@
+fileFormatVersion: 2
+guid: 57220e7f97c78aa41b9f4b6467c5bdb0
+timeCreated: 1481654116
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: AirShaft_1m
+    100004: AirShaft_3m
+    100006: AirShaft_6m
+    100008: AirShaft_corner
+    100010: AirShaft_cornerTop
+    100012: AirShaft_cross_1m
+    100014: AirShaft_cross_2m
+    100016: AirShaft_cornerDown
+    400000: //RootNode
+    400002: AirShaft_1m
+    400004: AirShaft_3m
+    400006: AirShaft_6m
+    400008: AirShaft_corner
+    400010: AirShaft_cornerTop
+    400012: AirShaft_cross_1m
+    400014: AirShaft_cross_2m
+    400016: AirShaft_cornerDown
+    2300000: //RootNode
+    2300002: AirShaft_1m
+    2300004: AirShaft_3m
+    2300006: AirShaft_6m
+    2300008: AirShaft_corner
+    2300010: AirShaft_cornerTop
+    2300012: AirShaft_cross_1m
+    2300014: AirShaft_cross_2m
+    2300016: AirShaft_cornerDown
+    3300000: //RootNode
+    3300002: AirShaft_1m
+    3300004: AirShaft_3m
+    3300006: AirShaft_6m
+    3300008: AirShaft_corner
+    3300010: AirShaft_cornerTop
+    3300012: AirShaft_cross_1m
+    3300014: AirShaft_cross_2m
+    3300016: AirShaft_cornerDown
+    4300000: air shaft001
+    4300002: AirShaft_3m
+    4300004: AirShaft_cross_1m
+    4300006: AirShaft_corner
+    4300008: AirShaft_1m
+    4300010: AirShaft_cornerTop
+    4300012: AirShaft_cross_2m
+    4300014: AirShaft_6m
+    4300016: AirShaft_cornerDown
+    4300018: Ventilation
+    6400000: //RootNode
+    6400002: AirShaft_1m
+    6400004: AirShaft_3m
+    6400006: AirShaft_6m
+    6400008: AirShaft_corner
+    6400010: AirShaft_cornerTop
+    6400012: AirShaft_cross_1m
+    6400014: AirShaft_cross_2m
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
