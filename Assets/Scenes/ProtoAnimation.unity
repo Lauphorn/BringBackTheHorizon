@@ -975,7 +975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &406652694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5815,12 +5815,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'B-thumb_02_L'\n\tTransform 'B-f_pinky_01_L'\n\tTransform
-    'B-f_index_01_R'\n\tTransform 'B-thumb_02_R'\n\tTransform 'B-thumb_01_L'\n\tTransform
-    'B-f_index_03_R'\n\tTransform 'B-f_ring_03_L'\n\tTransform 'B-f_middle_02_L'\n\tTransform
-    'B-shoulder_R'\n\tTransform 'B-thigh_R'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0

@@ -166,29 +166,26 @@ public class InteractableObject : MonoBehaviour
                 bodyController.BodyFollowPosition = BodyFollowPosition;
             }
 
-            if (MoveHands)
-            {
-                Handcontroller.LeftHandWeight = LeftHandWeight;
-                Handcontroller.RightHandWeight = RightHandWeight;
-            }
             
             if (!AnimBlock)
             {
 
                 if (bodyController.MoveDone == true || !MoveBody)
                 {
+                    Anim.SetTrigger("Interact");
+                    AnimBlock = true;
+
                     if (NeedNarration)
                     {
                         NarrationNeededCheck = Narration.Instance.Objects[NarrationNeededString];
                         Anim.SetBool("NarrationNeeded", NarrationNeededCheck);
                     }
-                    Anim.SetTrigger("Interact");
+
                     if (LaunchAnim)
                     {
-
                         Handcontroller.LaunchAnim(AnimBool);
                     }
-                    AnimBlock = true;
+
                 }
 
                 if (LookAtTarget && (bodyController.MoveDone == true || !MoveBody))
@@ -280,7 +277,7 @@ public class InteractableObject : MonoBehaviour
     }
 
     public void Release()
-    {       
+    {
         interacted = false;
         bodyController.BlockMove = false;
 
@@ -291,14 +288,11 @@ public class InteractableObject : MonoBehaviour
         Handcontroller.MoveRFinger = false;
 
         Handcontroller.LeftHandTarget = null;
-        Handcontroller.LeftHandWeight = 0;
         Handcontroller.RightHandTarget = null;
-        Handcontroller.RightHandWeight = 0;
 
         AnimBlock = false;
 
         bodyController.InAnim=false;
-
     }
 
     public void Hold()
@@ -317,5 +311,10 @@ public class InteractableObject : MonoBehaviour
     public void SwitchActivation()
     {
         Activated = !Activated;
+    }
+
+    public void ChangeWeight()
+    {
+        Handcontroller.Weight();
     }
 }

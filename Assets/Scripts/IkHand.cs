@@ -25,8 +25,9 @@ public class IkHand : MonoBehaviour
     public FullBodyBipedIK FullBodyIK;
     public float CrouchWeight;
 
-    public AnimationCurve myCurve;
-    //float y = this.myCurve.Evaluate(x);
+    public AnimationCurve WeightCurve;
+    public float WeightTimer;
+    public bool ChangeWeight;
 
 
     public Transform RightHandTarget;
@@ -68,7 +69,20 @@ public class IkHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RightHandWeight = Mathf.Clamp(RightHandWeight, 0, 1);
+        LeftHandWeight = Mathf.Clamp(LeftHandWeight, 0, 1);
+
+        RightHandWeight = WeightCurve.Evaluate(WeightTimer);
+        LeftHandWeight = WeightCurve.Evaluate(WeightTimer);
+
+        if (ChangeWeight && WeightTimer<1)
+        {
+            WeightTimer += Time.deltaTime;
+        }
+        if (!ChangeWeight && WeightTimer > 0)
+        {
+            WeightTimer -= Time.deltaTime;
+        }
     }
 
     public void LaunchAnim(string AnimName)
@@ -76,6 +90,10 @@ public class IkHand : MonoBehaviour
         avatar.SetTrigger(AnimName);
     }
 
+    public void Weight()
+    {
+        ChangeWeight = !ChangeWeight;
+    }
 
     private void OnAnimatorIK(int layerIndex)
     {

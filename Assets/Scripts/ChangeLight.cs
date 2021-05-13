@@ -6,7 +6,7 @@ public class ChangeLight : MonoBehaviour
 {
 
     public bool OnStart;
-    bool On;
+    public bool On;
     bool Done;
 
     public AudioClip ElecCoupée;
@@ -31,21 +31,6 @@ public class ChangeLight : MonoBehaviour
 
         if (Narration.Instance.Objects["Electricity"] == false)
         {
-            OnStart = false;
-        }
-
-
-        if (OnStart)
-        {
-            for (int i = 0; i < Emissive.Count; i++)
-            {
-                LightGO[i].enabled = true;
-                Emissive[i].material.SetColor(kEmissiveColor, emissiveColor[i]);
-                On = true;
-            }
-        }
-        else
-        {
             for (int i = 0; i < Emissive.Count; i++)
             {
                 LightGO[i].enabled = false;
@@ -60,7 +45,10 @@ public class ChangeLight : MonoBehaviour
     {
         if (!Done && Narration.Instance.Objects["Electricity"] == true)
         {
-            SwitchLight();
+            if (OnStart)
+            {
+                SwitchLight();
+            }
             Done = true;
         }
     }
@@ -72,6 +60,7 @@ public class ChangeLight : MonoBehaviour
         {
             Voice.Instance.LaunchVoice(ElecCoupée, Voix);
             VoiceDone = true;
+            OnStart = !OnStart;
         }
 
         if (On)
