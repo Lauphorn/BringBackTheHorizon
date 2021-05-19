@@ -69,9 +69,9 @@ public class Voice : MonoBehaviour
         foreach (char c in STitre)
         {
             IsPlaying = true;
-            if(c == '/')
+            if(c == '1')
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.1f);
                 STitreUi.text = "";
             }
             else

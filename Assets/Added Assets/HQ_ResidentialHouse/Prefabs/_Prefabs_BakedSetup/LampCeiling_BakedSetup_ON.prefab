@@ -142,7 +142,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.9776876, b: 0.9191176, a: 1}
   m_Intensity: 63.661976
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -186,7 +186,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 4946
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 33, z: 12, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.0168e-41, z: 0, w: -0.0000000043364707}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0.1
   m_ShadowAngle: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_ShadowTint: {r: 0, g: 0, b: 0, a: 1}
   m_PenumbraTint: 0
   m_NormalBias: 0.75
-  m_SlopeBias: 0.5
+  m_SlopeBias: 0
   m_ShadowUpdateMode: 0
   m_BarnDoorAngle: 90
   m_BarnDoorLength: 0.05
@@ -297,7 +297,7 @@ MonoBehaviour:
   useOldInspector: 0
   useVolumetric: 0
   featuresFoldout: 1
-  showAdditionalSettings: 0
+  showAdditionalSettings: 8
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
