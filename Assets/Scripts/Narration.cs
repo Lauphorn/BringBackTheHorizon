@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Narration : MonoBehaviour
 {
     private static Narration _instance;
@@ -17,18 +18,22 @@ public class Narration : MonoBehaviour
             _instance = this;
         }
 
-        Objects.Add("Fusible", false);
-        Objects.Add("Electricity", false);
+        foreach (Narrations state in System.Enum.GetValues(typeof(Narrations)))
+        {
+            NarrBool.Add(false);
+        }
     }
 
-    public Dictionary<string, bool> Objects = new Dictionary<string, bool>();
+    public enum Narrations { Fusible,FusibleOn, Electricity,KeyBibliotheque, KeyBureau };
+    public Narrations currentState;
 
+    public List<bool> NarrBool = new List<bool>();
 
-    
+    public bool NarrationHasChanged;
+
     // Start is called before the first frame update
     void Start()
     {
-
 
     }
 
@@ -37,4 +42,37 @@ public class Narration : MonoBehaviour
     {
 
     }
+
+
+    public int GetNarrationNumber(Narrations narr)
+    {
+        int i = 0;
+        foreach (Narrations state in System.Enum.GetValues(typeof(Narrations)))
+        {
+            i++;
+            if (state == narr)
+                break;
+        }
+        return i - 1;
+    }
+
+    public bool CheckNarration(Narrations narr)
+    {
+
+
+        if (NarrBool[GetNarrationNumber(narr)] == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void ChangeNarration(Narrations narr, bool state)
+    {
+        NarrBool[GetNarrationNumber(narr)] = state;
+        NarrationHasChanged = !NarrationHasChanged;
+    } 
 }

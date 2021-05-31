@@ -24,17 +24,17 @@ public class Voice : MonoBehaviour
     public TextMeshProUGUI STitreUi;
     string STitre;
 
-    bool IsPlaying;
+    bool fadeOn;
+    Color zm;
 
-
-    public bool Delayed;
+    public bool Delayed, IsPlaying;
     public AudioClip AClipDelayed;
     public string STitreDelayed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        zm = STitreUi.color;
     }
 
     // Update is called once per frame
@@ -44,6 +44,21 @@ public class Voice : MonoBehaviour
         {
             LaunchVoice(AClipDelayed, STitreDelayed);
             Delayed = false;
+        }
+
+        if (IsPlaying)
+        {
+            //STitreUi.color = zm;  //  makes a new color zm
+
+            if (fadeOn)
+            {
+                //zm.a += 0.01f;
+            }
+
+            if (!fadeOn)
+            {
+                //zm.a = 0;
+            }
         }
     }
 
@@ -69,19 +84,48 @@ public class Voice : MonoBehaviour
         foreach (char c in STitre)
         {
             IsPlaying = true;
-            if(c == '1')
+
+            if (c == '&')
             {
-                yield return new WaitForSeconds(0.1f);
+                STitreUi.alignment = TextAlignmentOptions.Left;
+            }
+
+            if (c == '=')
+            {
+                STitreUi.alignment = TextAlignmentOptions.Right;
+
+            }
+
+
+            if (c == '0')
+            {
+                yield return new WaitForSeconds(1f);
+            }
+
+            if (c == '1')
+            {
                 STitreUi.text = "";
+                fadeOn = false;
             }
             else
             {
-                STitreUi.text += c;
-                yield return new WaitForSeconds(0.05f);
+                fadeOn = true;
             }
+
+            if (c != '1' && c != '0' && c != '\n' && c != '&' && c != '=')
+            {
+                STitreUi.text += c;
+                //yield return new WaitForSeconds(Random.Range(0, 0.1f));
+            }
+
+
+
         }
         yield return new WaitForSeconds(1f);
         STitreUi.text = "";
         IsPlaying = false;
+        fadeOn = false;
+        zm.a =0;
+        //STitreUi.color = zm;
     }
 }

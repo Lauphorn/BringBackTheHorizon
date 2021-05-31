@@ -9,6 +9,7 @@ TagManager:
   - Fire
   - Item
   - ItemRange
+  - Glass
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - FakeStairs
   - Item
   - Stairs
-  - 
+  - Room
   - 
   - 
   - 

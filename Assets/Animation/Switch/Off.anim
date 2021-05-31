@@ -3566,7 +3566,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: ChangeWeight
+    functionName: ChangeWeightRight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -3580,7 +3580,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.25
-    functionName: ChangeWeight
+    functionName: ChangeWeightRight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

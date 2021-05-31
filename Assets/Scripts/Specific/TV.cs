@@ -17,7 +17,7 @@ public class TV : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Narration.Instance.Objects["Electricity"] == true && LightScript.On && !Done)
+        if(Narration.Instance.CheckNarration(Narration.Narrations.Electricity) == true && LightScript.On && !Done)
         {
             StartTv();
         }

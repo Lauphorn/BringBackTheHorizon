@@ -10,13 +10,15 @@ public class InteractableObject : MonoBehaviour
     CameraController cameraController;
     IkHand Handcontroller;
 
-    public bool OneUse;
-
     public bool Activated;
 
     public bool NeedActivation;
     [ConditionalField("NeedActivation")] public InteractableObject ParentObject;
-    bool ParentActivated;
+
+
+    public bool ShowIfNarration;
+    [ConditionalField("ShowIfNarration")] public Narration.Narrations ShowWithNarration;
+    bool narrCheck;
 
     public bool MoveBody;
     [ConditionalField("MoveBody")] public Transform BodyFollowPosition;
@@ -34,15 +36,14 @@ public class InteractableObject : MonoBehaviour
     [ConditionalField("LaunchFunction")] public UnityEvent OtherFunctions;
 
     public bool ChangeNarration;
-    [ConditionalField("ChangeNarration")] public string NarrationChangedString;
+    [ConditionalField("ChangeNarration")] public Narration.Narrations NarrationChanged;
 
     public bool NeedNarration;
-    [ConditionalField("NeedNarration")] public string NarrationNeededString;
+    [ConditionalField("NeedNarration")] public Narration.Narrations NarrationNeeded;
     bool NarrationNeededCheck;
 
     public bool UseVoice;
-    public List<AudioClip> VoiceClip;
-    public List<string> VoiceLine;
+    public List<SousTitre> Subtitle;
     [ConditionalField("UseVoice")] public int VoiceNumber;
 
     public bool GrabObject;
@@ -68,15 +69,20 @@ public class InteractableObject : MonoBehaviour
 
     public Animator Anim;
     public Animator KnobAnimator;
-    bool InRange, interacted, done;
+
     [HideInInspector]
-    public bool interactable,looked;
-    bool AnimBlock;
+    public bool InRange, interacted, done, interactable, looked, ParentActivated, InRoom, blocked, NarrationActivationCheck;
+
+    bool AnimBlock, activatedOnce;
 
     // Start is called before the first frame update
     void Start()
     {
         KnobAnimator = transform.Find("UiInteraction").transform.GetComponent<Animator>();
+
+        gameObject.AddComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
 
         bodyController = FpsController.Instance;
@@ -107,9 +113,14 @@ public class InteractableObject : MonoBehaviour
 
         if(KnobAnimator != null && ParentActivated)
         {
-            if (InRange && !bodyController.InAnim && !done)
+            if (InRange && InRoom && !bodyController.InAnim && !done && NarrationActivationCheck)
             {
                 KnobAnimator.SetBool("Ball", true);
+
+                if (NeedNarration && activatedOnce)
+                {
+                    blocked = !Narration.Instance.CheckNarration(NarrationNeeded);
+                }
             }
             else
             {
@@ -142,13 +153,43 @@ public class InteractableObject : MonoBehaviour
             {
                 KnobAnimator.SetBool("Interactable", false);
             }
+
+            if (blocked)
+            {
+                KnobAnimator.SetBool("Locked", true);
+            }
+            else
+            {
+                KnobAnimator.SetBool("Locked", false);
+            }
         }
 
         if (NeedActivation)
         {
             ParentActivated = ParentObject.Activated;
-        }    
+        }
 
+
+        if (ShowIfNarration)
+        {
+            if (Narration.Instance.NarrationHasChanged != narrCheck)
+            {
+                narrCheck = Narration.Instance.NarrationHasChanged;
+
+                if (Narration.Instance.CheckNarration(ShowWithNarration))
+                {
+                    NarrationActivationCheck = true;
+                }
+                else
+                {
+                    NarrationActivationCheck = false;
+                }
+            }
+        }
+        else
+        {
+            NarrationActivationCheck = true;
+        }
 
         if (interacted)
         {
@@ -172,13 +213,28 @@ public class InteractableObject : MonoBehaviour
 
                 if (bodyController.MoveDone == true || !MoveBody)
                 {
-                    Anim.SetTrigger("Interact");
-                    AnimBlock = true;
+                    Debug.Log(Time.timeSinceLevelLoad);
+
+
 
                     if (NeedNarration)
                     {
-                        NarrationNeededCheck = Narration.Instance.Objects[NarrationNeededString];
-                        Anim.SetBool("NarrationNeeded", NarrationNeededCheck);
+                        NarrationNeededCheck = Narration.Instance.CheckNarration(NarrationNeeded);
+                        if (NarrationNeededCheck)
+                        {
+                            Anim.SetTrigger("Interact");
+                            AnimBlock = true;
+                        }
+                        else
+                        {
+                            Anim.SetTrigger("Narration");
+                            AnimBlock = true;
+                        }
+                    }
+                    else
+                    {
+                        Anim.SetTrigger("Interact");
+                        AnimBlock = true;
                     }
 
                     if (LaunchAnim)
@@ -198,20 +254,13 @@ public class InteractableObject : MonoBehaviour
 
     public void Interacted()
     {
-        if (interactable && looked && InRange && !done && ParentActivated)
+        interacted = true;
+        activatedOnce = true;
+
+        if (MoveHands)
         {
-            if (OneUse)
-            {
-                done = true;
-            }
-
-            interacted = true;
-
-            if (MoveHands)
-            {
-                MoveRHand();
-                MoveLHand();
-            }
+            MoveRHand();
+            MoveLHand();
         }
     }
 
@@ -263,7 +312,7 @@ public class InteractableObject : MonoBehaviour
 
     public void LaunchVoice()
     {
-        Voice.Instance.LaunchVoice(VoiceClip[VoiceNumber], VoiceLine[VoiceNumber]);
+        Subtitle[VoiceNumber].Talk();
     }
 
     public void RunFunction()
@@ -273,7 +322,8 @@ public class InteractableObject : MonoBehaviour
 
     public void ChangeNarrat()
     {
-        Narration.Instance.Objects[NarrationChangedString] = true;
+        Debug.Log("1");
+        Narration.Instance.ChangeNarration(NarrationChanged,true);
     }
 
     public void Release()
@@ -305,7 +355,19 @@ public class InteractableObject : MonoBehaviour
 
     public void Grab()
     {
-        ObjectGrabbed.SetParent(GrabbingHand, true);
+        if(ObjectGrabbed.parent != GrabbingHand)
+        {
+            ObjectGrabbed.SetParent(GrabbingHand, true);
+        }
+        else
+        {
+            ObjectGrabbed.parent = null;
+        }
+    }
+
+    public void OneUse()
+    {
+        done = true;
     }
 
     public void SwitchActivation()
@@ -313,8 +375,18 @@ public class InteractableObject : MonoBehaviour
         Activated = !Activated;
     }
 
-    public void ChangeWeight()
+    public void ChangeWeightLeft()
     {
-        Handcontroller.Weight();
+        Handcontroller.WeightLeft();
+    }
+
+    public void ChangeWeightRight()
+    {
+        Handcontroller.WeightRight();
+    }
+
+    public void ChangeLock()
+    {
+        blocked = !blocked;
     }
 }

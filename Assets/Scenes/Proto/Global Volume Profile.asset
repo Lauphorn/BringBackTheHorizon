@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3b8214f75b354e9ba2caadd022259, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
@@ -34,7 +34,7 @@ MonoBehaviour:
     min: 0
   farFocusStart:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2.36
     min: 0
   farFocusEnd:
     m_OverrideState: 1
@@ -82,10 +82,10 @@ MonoBehaviour:
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: -0.75
+    m_Value: 0.88
   contrast:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 11
     min: -100
     max: 100
   colorFilter:
@@ -101,7 +101,7 @@ MonoBehaviour:
     max: 180
   saturation:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: -2
     min: -100
     max: 100
 --- !u!114 &-6734983907552523430
@@ -132,7 +132,7 @@ MonoBehaviour:
     max: 1
   scatter:
     m_OverrideState: 1
-    m_Value: 0.633
+    m_Value: 1
     min: 0
     max: 1
   tint:
@@ -185,12 +185,12 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.74
+    m_Value: 0.642
     min: 0
     max: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.757
     min: 0.01
     max: 1
   roundness:
@@ -239,18 +239,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf384b154398e341b6b29969c078198, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 10
     min: 0
   maximumVelocity:
     m_OverrideState: 1
-    m_Value: 600
+    m_Value: 483
     min: 0
     max: 1500
   minimumVelocity:
