@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
     public Quaternion actualRot;
 
     public Transform LookAtTarget;
-    public bool BlockRotation;
+    public bool BlockRotation, pause;
 
 
     private void Start()
@@ -53,58 +53,60 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-
-        if (!BlockRotation)
+        if (!pause)
         {
-            float yRot = Input.GetAxis("Mouse X") * XSensitivity;
-            float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
-
-
-            actualRot = transform.rotation;
-            cacheRot = Quaternion.Angle(actualRot, oldRot);
-            oldRot = transform.rotation;
-
-
-            Anim.SetFloat("RotSpeed", cacheRot);
-
-            m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
-            m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
-
-            if (clampVerticalRotation)
+            if (!BlockRotation)
             {
-                m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
-            }
+                float yRot = Input.GetAxis("Mouse X") * XSensitivity;
+                float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
 
 
-            if (smooth)
-            {
-                characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot,
+                actualRot = transform.rotation;
+                cacheRot = Quaternion.Angle(actualRot, oldRot);
+                oldRot = transform.rotation;
+
+
+                Anim.SetFloat("RotSpeed", cacheRot);
+
+                m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+                m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+                if (clampVerticalRotation)
+                {
+                    m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
+                }
+
+
+                if (smooth)
+                {
+                    characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot,
+                            smoothTime * Time.deltaTime);
+                    cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot,
                         smoothTime * Time.deltaTime);
-                cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot,
-                    smoothTime * Time.deltaTime);
+                }
+                else
+                {
+                    characterRotation.rotation = m_CharacterTargetRot;
+                    cam.localRotation = m_CameraTargetRot;
+                }
             }
             else
             {
-                characterRotation.rotation = m_CharacterTargetRot;
-                cam.localRotation = m_CameraTargetRot;
+
+                var lookPos = LookAtTarget.position - characterRotation.position;
+                lookPos.y = 0;
+
+                m_CharacterTargetRot = Quaternion.LookRotation(lookPos);
+                characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot, 3 * Time.deltaTime);
+
+                Quaternion _lookRotation = Quaternion.LookRotation((LookAtTarget.position - cam.position).normalized);
+                m_CameraTargetRot = Quaternion.Euler(_lookRotation.eulerAngles.x, cam.localRotation.eulerAngles.y, cam.localRotation.eulerAngles.z);
+                cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot, 3 * Time.deltaTime);
+
+                m_CameraTargetRot = cam.localRotation;
+                m_CharacterTargetRot = characterRotation.rotation;
+
             }
-        }
-        else
-        {
-
-            var lookPos = LookAtTarget.position - characterRotation.position;
-            lookPos.y = 0;
-
-            m_CharacterTargetRot = Quaternion.LookRotation(lookPos);
-            characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot, 3 * Time.deltaTime);
-
-            Quaternion _lookRotation = Quaternion.LookRotation((LookAtTarget.position - cam.position).normalized);
-            m_CameraTargetRot = Quaternion.Euler(_lookRotation.eulerAngles.x, cam.localRotation.eulerAngles.y, cam.localRotation.eulerAngles.z);
-            cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot, 3 * Time.deltaTime);
-
-            m_CameraTargetRot = cam.localRotation;
-            m_CharacterTargetRot = characterRotation.rotation;
-
         }
    
     }

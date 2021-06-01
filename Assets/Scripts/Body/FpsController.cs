@@ -48,7 +48,7 @@ public class FpsController : MonoBehaviour
     public float rotationDamping, moveDamping;
 
     public Animator Anim;
-    public bool InAnim;
+    public bool InAnim, pause;
 
     private void Start()
     {
@@ -62,8 +62,11 @@ public class FpsController : MonoBehaviour
     {
         if (!BlockMove)
         {
-            Move();
-            MoveDone = false;
+            if (!pause)
+            {
+                Move();
+                MoveDone = false;
+            }
         }
         else
         {

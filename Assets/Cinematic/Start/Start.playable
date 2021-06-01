@@ -301,10 +301,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
-    m_ClipIn: 0
+    m_Start: 0.18333333333333332
+    m_ClipIn: 0.18333333333333332
     m_Asset: {fileID: 4517434415641782127}
-    m_Duration: 40.43333333333333
+    m_Duration: 40.25
     m_TimeScale: 1
     m_ParentTrack: {fileID: 4344132005894382840}
     m_EaseInDuration: 0

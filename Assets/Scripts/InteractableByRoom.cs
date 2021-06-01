@@ -25,7 +25,7 @@ public class InteractableByRoom : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Item")
+        if (other.tag == "Item" && !Interactifs.Contains(other.GetComponent<InteractableObject>()))
         {
             Interactifs.Add(other.GetComponent<InteractableObject>());
         }
@@ -52,6 +52,9 @@ public class InteractableByRoom : MonoBehaviour
 
     IEnumerator FinishFirst()
     {
+        gameObject.GetComponent<Collider>().enabled = true;
+        yield return new WaitForSeconds(1);
+        gameObject.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(1);
         gameObject.GetComponent<Collider>().enabled = true;
     }
