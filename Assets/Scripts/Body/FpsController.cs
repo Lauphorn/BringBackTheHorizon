@@ -37,7 +37,7 @@ public class FpsController : MonoBehaviour
     public Transform Rotation;
 
     [HideInInspector]
-    public bool BlockMove, MoveDone;
+    public bool BlockMove, MoveDone, FollowTarget;
     [HideInInspector]
     public Transform BodyFollowPosition;
 
@@ -68,7 +68,8 @@ public class FpsController : MonoBehaviour
                 MoveDone = false;
             }
         }
-        else
+
+        if(FollowTarget)
         {
             FollowTargetWitouthRotation(BodyFollowPosition, 0.2f, 300f);
         }
@@ -213,6 +214,16 @@ public class FpsController : MonoBehaviour
         {
             m_Rigidbody.useGravity = true;
         }
+    }
+
+    public void BlockMoves()
+    {
+        BlockMove = true;
+    }
+
+    public void UnblockMoves()
+    {
+        BlockMove = false;
     }
 }
 

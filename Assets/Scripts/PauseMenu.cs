@@ -13,7 +13,6 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -23,22 +22,14 @@ public class PauseMenu : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Anim.SetBool("Open", !Anim.GetBool("Open"));
-            }
-
-            if (Anim.GetBool("Open"))
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                FpsController.Instance.pause = true;
-                CameraController.Instance.pause = true;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                FpsController.Instance.pause = false;
-                CameraController.Instance.pause = false;
+                if (Anim.GetBool("Open"))
+                {
+                    Resume();
+                }
+                else
+                {
+                    ShowMenu();
+                }
             }
         }
 
@@ -54,9 +45,22 @@ public class PauseMenu : MonoBehaviour
         Anim.SetBool("Show", false);
     }
 
+    public void ShowMenu()
+    {
+        Anim.SetBool("Open", true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        FpsController.Instance.pause = true;
+        CameraController.Instance.pause = true;
+    }
+
     public void Resume()
     {
-        Anim.SetBool("Open", !Anim.GetBool("Open"));
+        Anim.SetBool("Open", false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        FpsController.Instance.pause = false;
+        CameraController.Instance.pause = false;
     }
 
     public void Menu()

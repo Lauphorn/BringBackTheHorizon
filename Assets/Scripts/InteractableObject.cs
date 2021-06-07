@@ -205,6 +205,7 @@ public class InteractableObject : MonoBehaviour
             {
                 bodyController.BlockMove = true;
                 bodyController.BodyFollowPosition = BodyFollowPosition;
+                bodyController.FollowTarget = true;
             }
 
             
@@ -343,6 +344,8 @@ public class InteractableObject : MonoBehaviour
         AnimBlock = false;
 
         bodyController.InAnim=false;
+        bodyController.FollowTarget = false;
+
     }
 
     public void Hold()

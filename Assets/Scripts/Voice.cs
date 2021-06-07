@@ -35,6 +35,7 @@ public class Voice : MonoBehaviour
     void Start()
     {
         zm = STitreUi.color;
+        zm.a = 0;
     }
 
     // Update is called once per frame
@@ -46,18 +47,18 @@ public class Voice : MonoBehaviour
             Delayed = false;
         }
 
+        STitreUi.color = zm;  //  makes a new color zm
+
         if (IsPlaying)
         {
-            //STitreUi.color = zm;  //  makes a new color zm
-
-            if (fadeOn)
+            if (fadeOn && zm.a<=1)
             {
-                //zm.a += 0.01f;
+                zm.a += 0.05f;
             }
 
-            if (!fadeOn)
+            if (!fadeOn && zm.a >= 0 )
             {
-                //zm.a = 0;
+                zm.a -= 0.05f;
             }
         }
     }
@@ -96,23 +97,25 @@ public class Voice : MonoBehaviour
 
             }
 
+            if (c == '{')
+            {
+                STitreUi.text = "";
+                fadeOn = true;
+            }
+
+            if (c == '}')
+            {
+                fadeOn = false;
+                yield return new WaitForSeconds(1f);
+            }
+
 
             if (c == '0')
             {
                 yield return new WaitForSeconds(1f);
             }
 
-            if (c == '1')
-            {
-                STitreUi.text = "";
-                fadeOn = false;
-            }
-            else
-            {
-                fadeOn = true;
-            }
-
-            if (c != '1' && c != '0' && c != '\n' && c != '&' && c != '=')
+            if (c != '1' && c != '0' && c != '\n' && c != '&' && c != '=' && c != '{' && c != '}')
             {
                 STitreUi.text += c;
                 //yield return new WaitForSeconds(Random.Range(0, 0.1f));
@@ -125,7 +128,7 @@ public class Voice : MonoBehaviour
         STitreUi.text = "";
         IsPlaying = false;
         fadeOn = false;
-        zm.a =0;
         //STitreUi.color = zm;
     }
+
 }

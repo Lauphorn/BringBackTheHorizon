@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
     public Quaternion actualRot;
 
     public Transform LookAtTarget;
-    public bool BlockRotation, pause;
+    public bool BlockRotation, pause, BlockMouse;
 
 
     private void Start()
@@ -57,38 +57,41 @@ public class CameraController : MonoBehaviour
         {
             if (!BlockRotation)
             {
-                float yRot = Input.GetAxis("Mouse X") * XSensitivity;
-                float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
-
-
-                actualRot = transform.rotation;
-                cacheRot = Quaternion.Angle(actualRot, oldRot);
-                oldRot = transform.rotation;
-
-
-                Anim.SetFloat("RotSpeed", cacheRot);
-
-                m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
-                m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
-
-                if (clampVerticalRotation)
+                if (!BlockMouse)
                 {
-                    m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
-                }
+                    float yRot = Input.GetAxis("Mouse X") * XSensitivity;
+                    float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
+
+                    actualRot = transform.rotation;
+                    cacheRot = Quaternion.Angle(actualRot, oldRot);
+                    oldRot = transform.rotation;
 
 
-                if (smooth)
-                {
-                    characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot,
+                    Anim.SetFloat("RotSpeed", cacheRot);
+
+                    m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+                    m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+                    if (clampVerticalRotation)
+                    {
+                        m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
+                    }
+
+
+                    if (smooth)
+                    {
+                        characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot,
+                                smoothTime * Time.deltaTime);
+                        cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot,
                             smoothTime * Time.deltaTime);
-                    cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot,
-                        smoothTime * Time.deltaTime);
+                    }
+                    else
+                    {
+                        characterRotation.rotation = m_CharacterTargetRot;
+                        cam.localRotation = m_CameraTargetRot;
+                    }
                 }
-                else
-                {
-                    characterRotation.rotation = m_CharacterTargetRot;
-                    cam.localRotation = m_CameraTargetRot;
-                }
+
             }
             else
             {
@@ -132,5 +135,15 @@ public class CameraController : MonoBehaviour
     {
         LookAtTarget = lookat;
         BlockRotation = !BlockRotation;
+    }
+
+    public void BlockRotations()
+    {
+        BlockMouse = true;
+    }
+
+    public void UnblockRotation()
+    {
+        BlockMouse = false;
     }
 }
