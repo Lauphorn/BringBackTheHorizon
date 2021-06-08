@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33000012610074442}
   - component: {fileID: 23000011990313048}
   - component: {fileID: 64000013673334460}
-  - component: {fileID: 2090560577}
   m_Layer: 8
   m_Name: LampCeiling_BakedSetup_ON
   m_TagString: Untagged
@@ -98,23 +97,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d43b881ba7f1cac43bff8ace20973071, type: 3}
---- !u!114 &2090560577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010052453070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnStart: 1
-  On: 0
-  Sub: {fileID: 0}
-  Emissive:
-  - {fileID: 23000011990313048}
 --- !u!1 &1000013780152902
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,8 +277,8 @@ MonoBehaviour:
   m_RayTracedContactShadow: 0
   m_ShadowTint: {r: 0, g: 0, b: 0, a: 1}
   m_PenumbraTint: 0
-  m_NormalBias: 0.75
-  m_SlopeBias: 0.25
+  m_NormalBias: 1
+  m_SlopeBias: 0.5
   m_ShadowUpdateMode: 0
   m_BarnDoorAngle: 90
   m_BarnDoorLength: 0.05
