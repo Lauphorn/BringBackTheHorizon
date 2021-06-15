@@ -36,16 +36,6 @@ public class MenuUi : MonoBehaviour
         }
     }
 
-    public void Show(Animator Anim)
-    {
-        Anim.SetBool("Show", true);
-    }
-
-    public void Hide(Animator Anim)
-    {
-        Anim.SetBool("Show", false);
-    }
-
     public void Transition()
     {
         TransitionStart = true;

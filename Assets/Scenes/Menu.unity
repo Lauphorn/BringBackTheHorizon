@@ -879,7 +879,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 372306885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -890,20 +890,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 3602450b61c1b2942a0e31d0dc35cea9, type: 3}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: SETTINGS
+  m_Sprite: {fileID: 21300000, guid: 01c62e49fe13ae7428b19831f715e93f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &372306888
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1314,7 +1310,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1032905425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1325,20 +1321,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 3602450b61c1b2942a0e31d0dc35cea9, type: 3}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: QUIT
+  m_Sprite: {fileID: 21300000, guid: 01c62e49fe13ae7428b19831f715e93f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1032905428
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1361,6 +1353,7 @@ GameObject:
   - component: {fileID: 1070518734}
   - component: {fileID: 1070518737}
   - component: {fileID: 1070518738}
+  - component: {fileID: 1070518739}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -1518,8 +1511,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6938489}
-          m_TargetAssemblyTypeName: MenuUi, Assembly-CSharp
+        - m_Target: {fileID: 1070518739}
+          m_TargetAssemblyTypeName: ButtonsWithGif, Assembly-CSharp
           m_MethodName: Show
           m_Mode: 2
           m_Arguments:
@@ -1534,8 +1527,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6938489}
-          m_TargetAssemblyTypeName: MenuUi, Assembly-CSharp
+        - m_Target: {fileID: 1070518739}
+          m_TargetAssemblyTypeName: ButtonsWithGif, Assembly-CSharp
           m_MethodName: Hide
           m_Mode: 2
           m_Arguments:
@@ -1546,6 +1539,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1070518739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070518732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f0cbc30cc878a46ac8431ae34149da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  One:
+  - {fileID: 21300000, guid: 913be2b8e93c9f74aba48ab3eb469b00, type: 3}
+  - {fileID: 21300000, guid: 3ec1b93ceca6ba943a6b1c7b0c644102, type: 3}
+  - {fileID: 21300000, guid: 200ae366602b62944b64d5db428c9222, type: 3}
+  - {fileID: 21300000, guid: f9a0b89ca9090544b936b2c866e15803, type: 3}
+  - {fileID: 21300000, guid: d1bca3317596a444ebba7d3dde6c3d41, type: 3}
+  Two:
+  - {fileID: 21300000, guid: ab65bf1bd70aef24881ab27fa1f342b8, type: 3}
+  - {fileID: 21300000, guid: fef145ecaa7b1d544a00d442b4c5c170, type: 3}
+  - {fileID: 21300000, guid: fc29e14d9bad53e46834159dfd913386, type: 3}
+  - {fileID: 21300000, guid: 616364805f6d7be4e9c600525078fd13, type: 3}
+  - {fileID: 21300000, guid: 2da3f13e43a064a499b330e42c1ed2ff, type: 3}
+  Img: {fileID: 1032905427}
+  place: 0
+  actualImg: 0
+  Delay: 0.25
 --- !u!1 &1089316083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1839,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221183153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1829,20 +1850,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 3602450b61c1b2942a0e31d0dc35cea9, type: 3}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: PLAY
+  m_Sprite: {fileID: 21300000, guid: 01c62e49fe13ae7428b19831f715e93f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1221183156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1931,6 +1948,7 @@ GameObject:
   - component: {fileID: 1398159413}
   - component: {fileID: 1398159416}
   - component: {fileID: 1398159417}
+  - component: {fileID: 1398159418}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -2077,8 +2095,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6938489}
-          m_TargetAssemblyTypeName: MenuUi, Assembly-CSharp
+        - m_Target: {fileID: 1398159418}
+          m_TargetAssemblyTypeName: ButtonsWithGif, Assembly-CSharp
           m_MethodName: Show
           m_Mode: 2
           m_Arguments:
@@ -2089,36 +2107,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 372306885}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 959530601}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6938489}
-          m_TargetAssemblyTypeName: MenuUi, Assembly-CSharp
+        - m_Target: {fileID: 1398159418}
+          m_TargetAssemblyTypeName: ButtonsWithGif, Assembly-CSharp
           m_MethodName: Hide
           m_Mode: 2
           m_Arguments:
@@ -2129,30 +2123,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 372306885}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 959530601}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+--- !u!114 &1398159418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398159411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f0cbc30cc878a46ac8431ae34149da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  One:
+  - {fileID: 21300000, guid: aac626196a366194babbc9433293226d, type: 3}
+  - {fileID: 21300000, guid: 0ec8a18ad74043d45926114f25128f17, type: 3}
+  - {fileID: 21300000, guid: 30eab6e09705adf4194410f88a54907f, type: 3}
+  - {fileID: 21300000, guid: 8c25378ba84dbc74c9a4caf6d842008b, type: 3}
+  - {fileID: 21300000, guid: e319b2278cb24834382fbf64c4b70739, type: 3}
+  Two:
+  - {fileID: 21300000, guid: 2070e6977ba95e24e849bd0bde84a1d9, type: 3}
+  - {fileID: 21300000, guid: 781621cf8148f8e4f80ea891041b45c9, type: 3}
+  - {fileID: 21300000, guid: cf7ac35807731f3419b53842e3541937, type: 3}
+  - {fileID: 21300000, guid: 12ad258663b98cf4790619fed3ed23bf, type: 3}
+  - {fileID: 21300000, guid: bc8135eb6a108024384e59287d131490, type: 3}
+  Img: {fileID: 372306887}
+  place: 0
+  actualImg: 0
+  Delay: 0.25
 --- !u!1 &1654817498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,6 +2240,7 @@ GameObject:
   - component: {fileID: 1765708478}
   - component: {fileID: 1765708481}
   - component: {fileID: 1765708482}
+  - component: {fileID: 1765708483}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -2411,8 +2410,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6938489}
-          m_TargetAssemblyTypeName: MenuUi, Assembly-CSharp
+        - m_Target: {fileID: 1765708483}
+          m_TargetAssemblyTypeName: ButtonsWithGif, Assembly-CSharp
           m_MethodName: Show
           m_Mode: 2
           m_Arguments:
@@ -2427,8 +2426,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6938489}
-          m_TargetAssemblyTypeName: MenuUi, Assembly-CSharp
+        - m_Target: {fileID: 1765708483}
+          m_TargetAssemblyTypeName: ButtonsWithGif, Assembly-CSharp
           m_MethodName: Hide
           m_Mode: 2
           m_Arguments:
@@ -2439,3 +2438,31 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1765708483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765708476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f0cbc30cc878a46ac8431ae34149da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  One:
+  - {fileID: 21300000, guid: 1f828e18f568022419e3a452cc08047e, type: 3}
+  - {fileID: 21300000, guid: 7b03ad7c18101b8448f2d7eedb423d9e, type: 3}
+  - {fileID: 21300000, guid: f70caee1ef9a5144885d142afb8c4e38, type: 3}
+  - {fileID: 21300000, guid: 25f15bfee53bb9e469eb6cb5894c69dc, type: 3}
+  - {fileID: 21300000, guid: 12c5a9ca0f2a35842a944f44281de941, type: 3}
+  Two:
+  - {fileID: 21300000, guid: 5e3b9384db19a0342892526437e310a2, type: 3}
+  - {fileID: 21300000, guid: c68a65c10cc874549b08e12a8f223a0d, type: 3}
+  - {fileID: 21300000, guid: 62867b4b7e28c3244bf9e96d92e59525, type: 3}
+  - {fileID: 21300000, guid: 1ee466c65d8e49b42bacb426bcf09d06, type: 3}
+  - {fileID: 21300000, guid: 9e503c030728dc049ad792d28eecb15d, type: 3}
+  Img: {fileID: 1221183155}
+  place: 0
+  actualImg: 0
+  Delay: 0.25
