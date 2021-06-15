@@ -115,7 +115,7 @@ public class Voice : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
 
-            if (c != '1' && c != '0' && c != '\n' && c != '&' && c != '=' && c != '{' && c != '}')
+            if (c != '0' && c != '\n' && c != '&' && c != '=' && c != '{' && c != '}')
             {
                 STitreUi.text += c;
                 //yield return new WaitForSeconds(Random.Range(0, 0.1f));

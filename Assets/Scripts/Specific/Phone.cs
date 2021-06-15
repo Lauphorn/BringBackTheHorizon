@@ -28,6 +28,8 @@ public class Phone : MonoBehaviour
         Audio = gameObject.GetComponent<AudioSource>();
         LightTimer = 1;
         Next = true;
+
+        Debug.Log(ListeDeVoix.Count);
     }
 
     // Update is called once per frame
@@ -40,11 +42,10 @@ public class Phone : MonoBehaviour
             {
                 OnLight = true;
                 NarrationCheckDone = true;
-                Anim.ParentActivated = true;
             }
             else
             {
-                Anim.ParentActivated = false;
+                Anim.done = true;
             }
         }
 
@@ -69,17 +70,17 @@ public class Phone : MonoBehaviour
 
                 if (voix.IsPlaying)
                 {
-                    Anim.ParentActivated = false;
+                    Anim.done = true;
                 }
                 else
                 {
-                    Anim.ParentActivated = true;
+                    Anim.done = false;
                 }
             }
             else
             {
                 OnLight = false;
-                Anim.interactable = false;
+                Anim.done = false;
             }
 
 
@@ -93,14 +94,18 @@ public class Phone : MonoBehaviour
         NuméroVoix += 1;
         if(NuméroVoix < ListeDeVoix.Count)
         {
-            if (narr.CheckNarration(ListeDeNarrations[NuméroVoix]))
+            if(ListeDeVoix[NuméroVoix] != null)
             {
-                Next = true;
+                if (narr.CheckNarration(ListeDeNarrations[NuméroVoix]))
+                {
+                    Next = true;
+                }
+                else
+                {
+                    Next = false;
+                }
             }
-            else
-            {
-                Next = false;
-            }
+
         }
         else
         {
