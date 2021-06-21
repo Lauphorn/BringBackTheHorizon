@@ -91,7 +91,7 @@ public class MeshCombineWizard : ScriptableWizard
 
 			// Create asset
 			materialName += "_" + combinedMesh.GetInstanceID();
-			AssetDatabase.CreateAsset(combinedMesh, "Assets/CombinedMeshes_" + materialName + ".asset");
+			AssetDatabase.CreateAsset(combinedMesh, "Assets/CombinedMesh" + materialName + ".asset");
 
 			// Create game object
 			string goName = (materialToMeshFilterList.Count > 1)? "CombinedMeshes_" + materialName : "CombinedMeshes_" + combineParent.name;
@@ -114,7 +114,7 @@ public class MeshCombineWizard : ScriptableWizard
 		}
 
 		// Create prefab
-		Object prefab = PrefabUtility.CreateEmptyPrefab("Assets/" + resultGO.name + ".prefab");
+		Object prefab = PrefabUtility.CreateEmptyPrefab("Assets/CombinedMesh" + resultGO.name + ".prefab");
 		PrefabUtility.ReplacePrefab(resultGO, prefab, ReplacePrefabOptions.ConnectToPrefab);
 
 		// Disable the original and return both to original positions

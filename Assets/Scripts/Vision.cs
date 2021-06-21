@@ -25,7 +25,7 @@ public class Vision : MonoBehaviour
     public void ChangeVision(float Value)
     {
         ValueGoal = Value;
-        StartCoroutine(ChangeFogDensity());
+        StartCoroutine(ChangeWeight());
     }
 
     public void ChangeSpeed(float TimeToGo)
@@ -33,7 +33,7 @@ public class Vision : MonoBehaviour
         speed = TimeToGo;
     }
 
-    public IEnumerator ChangeFogDensity()
+    public IEnumerator ChangeWeight()
     {
         float startingValue = Vol.weight;
 

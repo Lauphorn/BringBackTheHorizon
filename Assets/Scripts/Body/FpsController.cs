@@ -71,7 +71,7 @@ public class FpsController : MonoBehaviour
 
         if(FollowTarget)
         {
-            FollowTargetWitouthRotation(BodyFollowPosition, 0.2f, 300f);
+            FollowTargetWitouthRotation(BodyFollowPosition);
         }
 
 
@@ -130,14 +130,14 @@ public class FpsController : MonoBehaviour
         }
     }
 
-    public void FollowTargetWitouthRotation(Transform target, float distanceToStop, float speed)
+    public void FollowTargetWitouthRotation(Transform target)
     {
         var direction = Vector3.zero;
-        if (Vector3.Distance(transform.position, target.position) > distanceToStop)
+        if (Vector3.Distance(transform.position, target.position) > 0.2f)
         {
 
             direction = target.position - transform.position;
-            m_Rigidbody.AddRelativeForce(direction.normalized * (speed *Time.deltaTime), ForceMode.Force);
+            m_Rigidbody.AddRelativeForce(direction.normalized * (300 *Time.deltaTime), ForceMode.Force);
 
             MoveDone = false;
         }
@@ -223,6 +223,20 @@ public class FpsController : MonoBehaviour
 
     public void UnblockMoves()
     {
+        BlockMove = false;
+    }
+
+    public void FollowPosition(Transform PositionToFollow)
+    {
+        FollowTarget = true;
+        BodyFollowPosition = PositionToFollow;
+        BlockMove = true;
+    }
+
+    public void StopFollow()
+    {
+        FollowTarget = false;
+        BodyFollowPosition = null;
         BlockMove = false;
     }
 }

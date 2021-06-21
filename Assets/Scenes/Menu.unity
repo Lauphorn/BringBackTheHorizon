@@ -364,6 +364,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1bf0d5aae51a05448871f972097da95c, type: 3}
   - {fileID: 21300000, guid: 5c174c6cb850db24da486018c5072a17, type: 3}
   menuScript: {fileID: 1089316084}
+  Aud: {fileID: 409540661}
   timer: 0
 --- !u!1 &15697151
 GameObject:
@@ -919,7 +920,7 @@ GameObject:
   - component: {fileID: 409540662}
   - component: {fileID: 409540661}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Musique
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1564,8 +1565,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 616364805f6d7be4e9c600525078fd13, type: 3}
   - {fileID: 21300000, guid: 2da3f13e43a064a499b330e42c1ed2ff, type: 3}
   Img: {fileID: 1032905427}
-  place: 0
-  actualImg: 0
   Delay: 0.25
 --- !u!1 &1089316083
 GameObject:
@@ -2148,8 +2147,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 12ad258663b98cf4790619fed3ed23bf, type: 3}
   - {fileID: 21300000, guid: bc8135eb6a108024384e59287d131490, type: 3}
   Img: {fileID: 372306887}
-  place: 0
-  actualImg: 0
   Delay: 0.25
 --- !u!1 &1654817498
 GameObject:
@@ -2463,6 +2460,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1ee466c65d8e49b42bacb426bcf09d06, type: 3}
   - {fileID: 21300000, guid: 9e503c030728dc049ad792d28eecb15d, type: 3}
   Img: {fileID: 1221183155}
-  place: 0
-  actualImg: 0
   Delay: 0.25

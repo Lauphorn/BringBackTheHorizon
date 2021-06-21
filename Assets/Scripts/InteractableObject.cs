@@ -203,9 +203,7 @@ public class InteractableObject : MonoBehaviour
 
             if (MoveBody)
             {
-                bodyController.BlockMove = true;
-                bodyController.BodyFollowPosition = BodyFollowPosition;
-                bodyController.FollowTarget = true;
+                bodyController.FollowPosition(BodyFollowPosition);
             }
 
             
@@ -214,9 +212,6 @@ public class InteractableObject : MonoBehaviour
 
                 if (bodyController.MoveDone == true || !MoveBody)
                 {
-                    Debug.Log(Time.timeSinceLevelLoad);
-
-
 
                     if (NeedNarration)
                     {
@@ -291,8 +286,7 @@ public class InteractableObject : MonoBehaviour
 
     void LookAt()
     {
-        cameraController.BlockRotation = true;
-        cameraController.LookAtTarget = LookFollowPosition;
+        cameraController.FollowRotation(LookFollowPosition);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -330,10 +324,9 @@ public class InteractableObject : MonoBehaviour
     public void Release()
     {
         interacted = false;
-        bodyController.BlockMove = false;
+        bodyController.StopFollow();
 
-        cameraController.LookAtTarget = null;
-        cameraController.BlockRotation = false;
+        cameraController.StopFollowRotation();
 
         Handcontroller.MoveLFinger = false;
         Handcontroller.MoveRFinger = false;
@@ -344,8 +337,6 @@ public class InteractableObject : MonoBehaviour
         AnimBlock = false;
 
         bodyController.InAnim=false;
-        bodyController.FollowTarget = false;
-
     }
 
     public void Hold()

@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
     public Quaternion actualRot;
 
     public Transform LookAtTarget;
-    public bool BlockRotation, pause, BlockMouse;
+    public bool BlockRotation, pause, Lookat;
 
 
     private void Start()
@@ -57,45 +57,41 @@ public class CameraController : MonoBehaviour
         {
             if (!BlockRotation)
             {
-                if (!BlockMouse)
+                float yRot = Input.GetAxis("Mouse X") * XSensitivity;
+                float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
+
+                actualRot = transform.rotation;
+                cacheRot = Quaternion.Angle(actualRot, oldRot);
+                oldRot = transform.rotation;
+
+
+                Anim.SetFloat("RotSpeed", cacheRot);
+
+                m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+                m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+                if (clampVerticalRotation)
                 {
-                    float yRot = Input.GetAxis("Mouse X") * XSensitivity;
-                    float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
-
-                    actualRot = transform.rotation;
-                    cacheRot = Quaternion.Angle(actualRot, oldRot);
-                    oldRot = transform.rotation;
-
-
-                    Anim.SetFloat("RotSpeed", cacheRot);
-
-                    m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
-                    m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
-
-                    if (clampVerticalRotation)
-                    {
-                        m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
-                    }
-
-
-                    if (smooth)
-                    {
-                        characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot,
-                                smoothTime * Time.deltaTime);
-                        cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot,
-                            smoothTime * Time.deltaTime);
-                    }
-                    else
-                    {
-                        characterRotation.rotation = m_CharacterTargetRot;
-                        cam.localRotation = m_CameraTargetRot;
-                    }
+                    m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
                 }
 
-            }
-            else
-            {
 
+                if (smooth)
+                {
+                    characterRotation.rotation = Quaternion.Slerp(characterRotation.rotation, m_CharacterTargetRot,
+                            smoothTime * Time.deltaTime);
+                    cam.localRotation = Quaternion.Slerp(cam.localRotation, m_CameraTargetRot,
+                        smoothTime * Time.deltaTime);
+                }
+                else
+                {
+                    characterRotation.rotation = m_CharacterTargetRot;
+                    cam.localRotation = m_CameraTargetRot;
+                }
+            }
+
+            if (Lookat)
+            {
                 var lookPos = LookAtTarget.position - characterRotation.position;
                 lookPos.y = 0;
 
@@ -108,7 +104,6 @@ public class CameraController : MonoBehaviour
 
                 m_CameraTargetRot = cam.localRotation;
                 m_CharacterTargetRot = characterRotation.rotation;
-
             }
         }
    
@@ -131,19 +126,27 @@ public class CameraController : MonoBehaviour
         return q;
     }
 
-    public void Lookat(Transform lookat)
+    public void FollowRotation(Transform lookat)
     {
         LookAtTarget = lookat;
-        BlockRotation = !BlockRotation;
+        Lookat = true;
+        BlockRotation = true;
+    }
+
+    public void StopFollowRotation()
+    {
+        LookAtTarget = null;
+        Lookat = false;
+        BlockRotation = false;
     }
 
     public void BlockRotations()
     {
-        BlockMouse = true;
+        BlockRotation = true;
     }
 
     public void UnblockRotation()
     {
-        BlockMouse = false;
+        BlockRotation = false;
     }
 }

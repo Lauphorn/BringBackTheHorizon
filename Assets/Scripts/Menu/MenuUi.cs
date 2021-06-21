@@ -11,6 +11,7 @@ public class MenuUi : MonoBehaviour
     public List<Sprite> TransitionSprite;
 
     public Menu menuScript;
+    public AudioSource Aud;
 
     public float timer;
     bool TransitionStart;
@@ -24,6 +25,7 @@ public class MenuUi : MonoBehaviour
     {
         if (TransitionStart)
         {
+            Aud.volume -= 0.01f;
             timer += Time.deltaTime;
             if (timer <= 2.5f)
             {
