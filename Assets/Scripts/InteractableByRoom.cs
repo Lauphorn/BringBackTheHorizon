@@ -25,10 +25,14 @@ public class InteractableByRoom : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Item" && !Interactifs.Contains(other.GetComponent<InteractableObject>()))
+        if(other.GetComponent<InteractableObject>())
         {
-            Interactifs.Add(other.GetComponent<InteractableObject>());
+            if (other.tag == "Item" && !Interactifs.Contains(other.GetComponent<InteractableObject>()))
+            {
+                Interactifs.Add(other.GetComponent<InteractableObject>());
+            }
         }
+
 
         if (other.tag == "Player")
         {

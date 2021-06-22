@@ -5,9 +5,13 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour
 {
     public Animator KnobAnimator;
-    public bool InRange, NarrationActivationCheck, Grabbed;
+    public bool InRange, NarrationActivationCheck, Grabbed, looked, interactable;
 
     public Narration.Narrations NarrationNeeded;
+
+    GameObject CameraPlace;
+    GameObject GrabFollowPosition;
+
     bool NarrationNeededCheck;
 
     public enum LogoChoice
@@ -20,31 +24,22 @@ public class GrabObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CameraPlace = CameraController.Instance.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         if (KnobAnimator != null)
         {
-            if (InRange && NarrationActivationCheck)
+            if (InRange /*&& NarrationActivationCheck*/)
             {
                 KnobAnimator.SetBool("Ball", true);
             }
             else
             {
                 KnobAnimator.SetBool("Ball", false);
-            }
-
-            if (logo == LogoChoice.Eye && looked)
-            {
-                KnobAnimator.SetBool("Eye", true);
-            }
-            else
-            {
-                KnobAnimator.SetBool("Eye", false);
             }
 
             if (logo == LogoChoice.Hand && looked)
@@ -56,7 +51,7 @@ public class GrabObject : MonoBehaviour
                 KnobAnimator.SetBool("Hand", false);
             }
 
-            if (interactable)
+            if (looked)
             {
                 KnobAnimator.SetBool("Interactable", true);
             }
@@ -64,26 +59,46 @@ public class GrabObject : MonoBehaviour
             {
                 KnobAnimator.SetBool("Interactable", false);
             }
+        }
 
-            if (blocked)
-            {
-                KnobAnimator.SetBool("Locked", true);
-            }
-            else
-            {
-                KnobAnimator.SetBool("Locked", false);
-            }
-        }*/
-
+        if (Grabbed)
+        {
+            transform.GetComponent<Rigidbody>().AddForce((GrabFollowPosition.transform.position - transform.position)*0.75f,ForceMode.VelocityChange);
+            transform.GetComponent<Rigidbody>().drag = 5 - (Vector3.Magnitude(GrabFollowPosition.transform.position - transform.position))*2;
+            Debug.Log("magnitude  " + Vector3.Magnitude(GrabFollowPosition.transform.position - transform.position));
+        }
     }
 
     public void Grab()
     {
-
+        Debug.Log("Grabbed");
+        KnobAnimator.SetBool("Grabbed", true);
+        transform.GetComponent<Rigidbody>().useGravity = false;
+        Grabbed = true;
+        GrabFollowPosition = CameraPlace.transform.GetChild(1).gameObject /*Instantiate(new GameObject(),transform.position, Quaternion.identity,CameraPlace.transform)*/;
     }
 
     public void Release()
     {
+        Debug.Log("Released");
+        KnobAnimator.SetBool("Grabbed", false);
+        transform.GetComponent<Rigidbody>().useGravity = true;
+        transform.GetComponent<Rigidbody>().drag = 0;
+        Grabbed = false;
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "ItemRange")
+        {
+            InRange = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "ItemRange")
+        {
+            InRange = false;
+        }
     }
 }

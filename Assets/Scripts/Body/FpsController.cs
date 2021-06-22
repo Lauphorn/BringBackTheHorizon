@@ -137,7 +137,7 @@ public class FpsController : MonoBehaviour
         {
 
             direction = target.position - transform.position;
-            m_Rigidbody.AddRelativeForce(direction.normalized * (300 *Time.deltaTime), ForceMode.Force);
+            m_Rigidbody.AddRelativeForce(direction.normalized * (300 *Time.deltaTime), ForceMode.Acceleration);
 
             MoveDone = false;
         }

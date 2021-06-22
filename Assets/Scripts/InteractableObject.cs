@@ -75,6 +75,7 @@ public class InteractableObject : MonoBehaviour
 
     bool AnimBlock, activatedOnce;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -250,14 +251,18 @@ public class InteractableObject : MonoBehaviour
 
     public void Interacted()
     {
-        interacted = true;
-        activatedOnce = true;
-
-        if (MoveHands)
+        if (interactable && looked && InRange && !done && ParentActivated && NarrationActivationCheck)
         {
-            MoveRHand();
-            MoveLHand();
+            interacted = true;
+            activatedOnce = true;
+
+            if (MoveHands)
+            {
+                MoveRHand();
+                MoveLHand();
+            }
         }
+
     }
 
     void MoveRHand()
