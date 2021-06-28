@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour
 {
     public Animator KnobAnimator;
-    bool InRange, NarrationActivationCheck, Grabbed;
+    bool InRange, NarrationActivationCheck, Grabbed, narrCheck;
     [HideInInspector]
     public bool looked, interactable;
     public Narration.Narrations NarrationNeeded;
@@ -13,7 +13,7 @@ public class GrabObject : MonoBehaviour
     GameObject CameraPlace;
     GameObject GrabFollowPosition;
 
-    bool NarrationNeededCheck;
+    public bool ShowIfNarration;
 
     public enum LogoChoice
     {
@@ -34,7 +34,7 @@ public class GrabObject : MonoBehaviour
         
         if (KnobAnimator != null)
         {
-            if (InRange /*&& NarrationActivationCheck*/)
+            if (InRange && NarrationActivationCheck)
             {
                 KnobAnimator.SetBool("Ball", true);
             }
@@ -68,15 +68,39 @@ public class GrabObject : MonoBehaviour
             transform.GetComponent<Rigidbody>().drag = 5 - (Vector3.Magnitude(GrabFollowPosition.transform.position - transform.position))*2;
             Debug.Log("magnitude  " + Vector3.Magnitude(GrabFollowPosition.transform.position - transform.position));
         }
+
+        if (ShowIfNarration)
+        {
+            if (Narration.Instance.NarrationHasChanged != narrCheck)
+            {
+                narrCheck = Narration.Instance.NarrationHasChanged;
+
+                if (Narration.Instance.CheckNarration(NarrationNeeded))
+                {
+                    NarrationActivationCheck = true;
+                }
+                else
+                {
+                    NarrationActivationCheck = false;
+                }
+            }
+        }
+        else
+        {
+            NarrationActivationCheck = true;
+        }
     }
 
     public void Grab()
     {
-        Debug.Log("Grabbed");
-        KnobAnimator.SetBool("Grabbed", true);
-        transform.GetComponent<Rigidbody>().useGravity = false;
-        Grabbed = true;
-        GrabFollowPosition = CameraPlace.transform.GetChild(1).gameObject /*Instantiate(new GameObject(),transform.position, Quaternion.identity,CameraPlace.transform)*/;
+        if (NarrationActivationCheck)
+        {
+            Debug.Log("Grabbed");
+            KnobAnimator.SetBool("Grabbed", true);
+            transform.GetComponent<Rigidbody>().useGravity = false;
+            Grabbed = true;
+            GrabFollowPosition = CameraPlace.transform.GetChild(1).gameObject;
+        }
     }
 
     public void Release()

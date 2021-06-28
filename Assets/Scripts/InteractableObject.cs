@@ -269,6 +269,18 @@ public class InteractableObject : MonoBehaviour
 
     }
 
+    public void InteractedForce()
+    {
+        interacted = true;
+        activatedOnce = true;
+
+        if (MoveHands)
+        {
+            MoveRHand();
+            MoveLHand();
+        }
+    }
+
     void MoveRHand()
     {
         Handcontroller.MoveRFinger = true;
