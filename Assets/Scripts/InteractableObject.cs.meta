@@ -3,7 +3,20 @@ guid: 11ab548b6355c99439a1b4369aecac48
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - BodyPrefab: {fileID: 1061494119362537403, guid: ef1bfcb5c6b7266428295b04a5c9bf16, type: 3}
+  - LookatPrefab: {fileID: 4837755524082641613, guid: 7c382327a841ba24db05c65c3d9568b2, type: 3}
+  - UiInteractionPrefab: {fileID: 7763552522054545637, guid: 27bb75e9e4804374f9a8f07ce21eb09f, type: 3}
+  - BodyPosPrefab: {fileID: 6628927422556189203, guid: fba93d0b5d308ff46955ac2bcb4ed34b, type: 3}
+  - ZonePrefab: {fileID: 2635610269796959609, guid: 5501066486d35ad408e7e216abc2b03b, type: 3}
+  - ParentObject: {instanceID: 0}
+  - BodyFollowPosition: {instanceID: 0}
+  - LookFollowPosition: {instanceID: 0}
+  - ObjectGrabbed: {instanceID: 0}
+  - GrabbingHand: {instanceID: 0}
+  - HandsHolder: {instanceID: 0}
+  - Anim: {instanceID: 0}
+  - KnobAnimator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -14,7 +14,6 @@ public class ObjectZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,4 +30,6 @@ public class ObjectZone : MonoBehaviour
             obj.interactable = false;
         }
     }
+
+
 }

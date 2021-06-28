@@ -8,7 +8,7 @@ public class Phone : MonoBehaviour
     public List<Narration.Narrations> ListeDeNarrations;
     public List<SousTitre> ListeDeVoix;
 
-    int NuméroVoix;
+    int NuméroVoix, messagesDispo;
 
     public GameObject Light;
     float LightTimer;
@@ -91,26 +91,30 @@ public class Phone : MonoBehaviour
     {
         Audio.Play();
         ListeDeVoix[NuméroVoix].Talk();
-        NuméroVoix += 1;
-        if(NuméroVoix < ListeDeVoix.Count)
+
+        while(Next)
         {
-            if(ListeDeVoix[NuméroVoix] != null)
+            if (NuméroVoix < ListeDeVoix.Count)
             {
-                if (narr.CheckNarration(ListeDeNarrations[NuméroVoix]))
+                if (ListeDeVoix[NuméroVoix] != null)
                 {
-                    Next = true;
+                    if (narr.CheckNarration(ListeDeNarrations[NuméroVoix]))
+                    {
+                        Next = true;
+                        messagesDispo += 1;
+                    }
+                    else
+                    {
+                        Next = false;
+                    }
                 }
-                else
-                {
-                    Next = false;
-                }
+
             }
-
+            else
+            {
+                Next = false;
+            }
         }
-        else
-        {
-            Next = false;
-        }
-
     }
+
 }

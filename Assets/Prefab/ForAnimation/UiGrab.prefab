@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 3066241243690744090}
   - component: {fileID: 1257634322}
   m_Layer: 5
-  m_Name: UiInteraction
+  m_Name: UiGrab
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 8063050a249eef441beb8cbbd04c086c, type: 3}
   m_NavMeshLayer: 0
@@ -274,7 +274,7 @@ Animator:
   m_GameObject: {fileID: 7763552522054545637}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 628795c2bb5986146bd61355d6f268bb, type: 2}
+  m_Controller: {fileID: 9100000, guid: ae8f7a983e5cceb49adeaa74a6a55191, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

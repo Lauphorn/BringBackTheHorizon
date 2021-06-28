@@ -15,10 +15,12 @@ public class InteractableObject : MonoBehaviour
     public bool NeedActivation;
     [ConditionalField("NeedActivation")] public InteractableObject ParentObject;
 
-
     public bool ShowIfNarration;
     [ConditionalField("ShowIfNarration")] public Narration.Narrations ShowWithNarration;
     bool narrCheck;
+
+    public bool HideWithGrabbedObjects;
+    int Hidden;
 
     public bool MoveBody;
     [ConditionalField("MoveBody")] public Transform BodyFollowPosition;
@@ -55,10 +57,12 @@ public class InteractableObject : MonoBehaviour
     
     HandLineRenderer RightHandRenderer;
     GameObject RightHand;
-    [ConditionalField("MoveHands")] public float RightHandWeight;
+    [HideInInspector]
+    public float RightHandWeight;
     HandLineRenderer LeftHandRenderer;
     GameObject LeftHand;
-    [ConditionalField("MoveHands")] public float LeftHandWeight;
+    [HideInInspector]
+    public float LeftHandWeight;
 
     public enum LogoChoice
     {
@@ -114,7 +118,7 @@ public class InteractableObject : MonoBehaviour
 
         if(KnobAnimator != null && ParentActivated)
         {
-            if (InRange && InRoom && !bodyController.InAnim && !done && NarrationActivationCheck)
+            if (InRange && InRoom && !bodyController.InAnim && !done && NarrationActivationCheck && Hidden==0)
             {
                 KnobAnimator.SetBool("Ball", true);
 
@@ -251,7 +255,7 @@ public class InteractableObject : MonoBehaviour
 
     public void Interacted()
     {
-        if (interactable && looked && InRange && !done && ParentActivated && NarrationActivationCheck)
+        if (interactable && looked && InRange && !done && ParentActivated && NarrationActivationCheck && Hidden ==0)
         {
             interacted = true;
             activatedOnce = true;
@@ -300,6 +304,11 @@ public class InteractableObject : MonoBehaviour
         {
             InRange = true;
         }
+
+        if (other.tag == "GrabItem" && HideWithGrabbedObjects)
+        {
+            Hidden +=1;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -308,6 +317,21 @@ public class InteractableObject : MonoBehaviour
         {
             InRange = false;
         }
+
+        if (other.tag == "GrabItem" && HideWithGrabbedObjects)
+        {
+            Hidden -=1;
+        }
+    }
+
+    void OnBecameInvisible()
+    {
+        Debug.Log("Invisible "+ gameObject.name);
+    }
+
+    void OnBecameVisible()
+    {
+        Debug.Log("Visible " + gameObject.name);
     }
 
     public void LaunchVoice()
@@ -388,4 +412,77 @@ public class InteractableObject : MonoBehaviour
     {
         blocked = !blocked;
     }
+
+    /*
+    [ExecuteInEditMode]
+    private void OnValidate()
+    {
+        if (!Application.isPlaying)
+        {
+
+            //Tag and layer
+            gameObject.tag = "Item";
+            gameObject.layer = 11;
+
+            //Lookat
+            if (LookAtTarget && transform.Find("Lookat") == null && LookFollowPosition == null)
+            {
+                LookFollowPosition = Instantiate(LookatPrefab, transform).transform;
+                LookFollowPosition.name = "Lookat";
+                Debug.Log("Problem" + gameObject.name);
+            }
+            if (!LookAtTarget && LookFollowPosition != null)
+            {
+                StartCoroutine(Destroy(LookFollowPosition.gameObject));
+            }
+
+            //movehands
+            if (MoveHands && transform.Find("Character") ==null && HandsHolder == null)
+            {
+                HandsHolder = Instantiate(BodyPrefab, transform).GetComponent<BodyHandHolder>();
+                HandsHolder.name = "Character";
+            }
+            if (!MoveHands && HandsHolder != null)
+            {
+                StartCoroutine(Destroy(HandsHolder.gameObject));
+            }
+
+            //uiKnob
+            if (KnobAnimator == null && transform.Find("UiInteraction") == null )
+            {
+                KnobAnimator = Instantiate(UiInteractionPrefab, transform).GetComponent<Animator>();
+                KnobAnimator.name = "UiInteraction";
+            }
+            if (Anim == null && GetComponent<Animator>() ==null)
+            {
+                Anim = gameObject.AddComponent<Animator>();
+            }
+
+            if (Zone == null && transform.Find("Zone") == null)
+            {
+                Zone = Instantiate(ZonePrefab, transform).GetComponent<ObjectZone>();
+                Zone.obj = this;
+                Zone.name = "Zone";
+            }
+
+            //uiKnob
+            if (MoveBody && transform.Find("BodyPos") == null && BodyFollowPosition == null)
+            {
+                BodyFollowPosition = Instantiate(BodyPosPrefab, transform).transform;
+                BodyFollowPosition.name = "BodyPos";
+            }
+            if (!MoveBody && BodyFollowPosition != null)
+            {
+                StartCoroutine(Destroy(BodyFollowPosition.gameObject));
+            }
+
+        }
+
+    }
+
+    IEnumerator Destroy(GameObject go)
+    {
+        yield return new WaitForEndOfFrame();
+        DestroyImmediate(go);
+    }*/
 }

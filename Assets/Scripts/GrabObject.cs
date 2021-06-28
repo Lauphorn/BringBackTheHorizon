@@ -5,8 +5,9 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour
 {
     public Animator KnobAnimator;
-    public bool InRange, NarrationActivationCheck, Grabbed, looked, interactable;
-
+    bool InRange, NarrationActivationCheck, Grabbed;
+    [HideInInspector]
+    public bool looked, interactable;
     public Narration.Narrations NarrationNeeded;
 
     GameObject CameraPlace;

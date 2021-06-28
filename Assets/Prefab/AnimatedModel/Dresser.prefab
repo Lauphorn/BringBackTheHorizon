@@ -187,16 +187,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ab548b6355c99439a1b4369aecac48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OneUse: 1
   Activated: 0
+  ShowPrefabs: 0
+  BodyPrefab: {fileID: 0}
+  LookatPrefab: {fileID: 0}
+  UiInteractionPrefab: {fileID: 0}
+  BodyPosPrefab: {fileID: 0}
+  ZonePrefab: {fileID: 0}
   NeedActivation: 1
   ParentObject: {fileID: 196517974000083106}
+  ShowIfNarration: 0
+  ShowWithNarration: 0
+  HideWithGrabbedObjects: 0
   MoveBody: 0
   BodyFollowPosition: {fileID: 0}
   Crouch: 0
   CrouchWeight: 0
   LookAtTarget: 0
-  LookFollowPosition: {fileID: 0}
   LaunchAnim: 0
   AnimBool: 
   LaunchFunction: 0
@@ -204,27 +211,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ChangeNarration: 0
-  NarrationChangedString: 
+  NarrationChanged: 0
   NeedNarration: 0
-  NarrationNeededString: 
+  NarrationNeeded: 0
   UseVoice: 1
-  VoiceClip:
-  - {fileID: 8300000, guid: 7499afc65d4b9a54dafa998ff160ad44, type: 3}
-  VoiceLine:
-  - Damn
+  Subtitle: []
   VoiceNumber: 0
   GrabObject: 0
   ObjectGrabbed: {fileID: 0}
   GrabbingHand: {fileID: 0}
   MoveHands: 0
-  HandsHolder: {fileID: 0}
   RightHandWeight: 0
   LeftHandWeight: 0
   logo: 1
-  Anim: {fileID: 28154543}
-  KnobAnimator: {fileID: 196517972597797120}
+  InRange: 0
+  interacted: 0
+  done: 0
   interactable: 0
   looked: 0
+  ParentActivated: 0
+  InRoom: 0
+  blocked: 0
+  NarrationActivationCheck: 0
 --- !u!1 &196517972897665826
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,16 +809,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ab548b6355c99439a1b4369aecac48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OneUse: 0
   Activated: 0
+  ShowPrefabs: 0
+  BodyPrefab: {fileID: 0}
+  LookatPrefab: {fileID: 0}
+  UiInteractionPrefab: {fileID: 0}
+  BodyPosPrefab: {fileID: 0}
+  ZonePrefab: {fileID: 0}
   NeedActivation: 0
   ParentObject: {fileID: 0}
+  ShowIfNarration: 0
+  ShowWithNarration: 0
+  HideWithGrabbedObjects: 0
   MoveBody: 1
   BodyFollowPosition: {fileID: 3134318119145031899}
   Crouch: 1
   CrouchWeight: 0
   LookAtTarget: 1
-  LookFollowPosition: {fileID: 196517972763004031}
   LaunchAnim: 0
   AnimBool: 
   LaunchFunction: 0
@@ -818,25 +833,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ChangeNarration: 0
-  NarrationChangedString: 
+  NarrationChanged: 0
   NeedNarration: 0
-  NarrationNeededString: 
+  NarrationNeeded: 0
   UseVoice: 0
-  VoiceClip: []
-  VoiceLine: []
+  Subtitle: []
   VoiceNumber: 0
   GrabObject: 0
   ObjectGrabbed: {fileID: 0}
   GrabbingHand: {fileID: 0}
   MoveHands: 1
-  HandsHolder: {fileID: 1367149118227052454}
   RightHandWeight: 0
   LeftHandWeight: 0
   logo: 0
-  Anim: {fileID: 196517974000083107}
-  KnobAnimator: {fileID: 196517973894581003}
+  InRange: 0
+  interacted: 0
+  done: 0
   interactable: 0
   looked: 0
+  ParentActivated: 0
+  InRoom: 0
+  blocked: 0
+  NarrationActivationCheck: 0
 --- !u!95 &196517974000083107
 Animator:
   serializedVersion: 3
@@ -1238,11 +1256,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 616570d2029907446a5713d4202ace2e, type: 3}
---- !u!95 &196517973894581003 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1257634322, guid: 616570d2029907446a5713d4202ace2e, type: 3}
-  m_PrefabInstance: {fileID: 196517972704145689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7568160552974057976 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7763552522054545633, guid: 616570d2029907446a5713d4202ace2e, type: 3}
@@ -1786,11 +1799,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 616570d2029907446a5713d4202ace2e, type: 3}
---- !u!95 &196517972597797120 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1257634322, guid: 616570d2029907446a5713d4202ace2e, type: 3}
-  m_PrefabInstance: {fileID: 196517973565770514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &196517973645494043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2308,17 +2316,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef1bfcb5c6b7266428295b04a5c9bf16, type: 3}
---- !u!114 &1367149118227052454 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1171845127861694653, guid: ef1bfcb5c6b7266428295b04a5c9bf16, type: 3}
-  m_PrefabInstance: {fileID: 196517973645494043}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da92d425e54e6c048ab9588cad78f108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &864976216587477156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1061494119362537407, guid: ef1bfcb5c6b7266428295b04a5c9bf16, type: 3}

@@ -7,6 +7,8 @@ public class Interact : MonoBehaviour
 
     public Camera mCam;
     int layer_mask;
+    int grabMask;
+
     InteractableObject savedObject;
     GrabObject savedGrab;
 
@@ -17,6 +19,7 @@ public class Interact : MonoBehaviour
     void Start()
     {
         layer_mask = LayerMask.GetMask("Item");
+        grabMask = LayerMask.GetMask("Grab");
     }
 
     // Update is called once per frame
@@ -60,25 +63,25 @@ public class Interact : MonoBehaviour
         Debug.DrawRay(mCam.transform.position, mCam.transform.forward, Color.green);
         RaycastHit hit2;
 
-        if (Physics.Raycast(mCam.transform.position, mCam.transform.forward, out hit2, 1.5f, layer_mask) && hit.collider.tag == "Item")
+        if (Physics.Raycast(mCam.transform.position, mCam.transform.forward, out hit2, 1.5f, grabMask) && hit2.collider.tag == "GrabItem")
         {
-            if (savedGrab != hit.transform.GetComponent<GrabObject>())
+            if (savedGrab != hit2.transform.GetComponent<GrabObject>())
             {
                 if (savedGrab != null)
                 {
                     savedGrab.looked = false;
                 }
 
-                savedGrab = hit.transform.GetComponent<GrabObject>();
+                savedGrab = hit2.transform.GetComponent<GrabObject>();
                 savedGrab.looked = true;
                 savedGrab.interactable = true;
             }
 
-            if (hit.transform.GetComponent<GrabObject>() != null)
+            if (hit2.transform.GetComponent<GrabObject>() != null)
             {
                 if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && !FpsController.Instance.InAnim)
                 {
-                    hit.transform.GetComponent<GrabObject>().Grab();
+                    hit2.transform.GetComponent<GrabObject>().Grab();
                     grabbed = true;
                 }
             }
