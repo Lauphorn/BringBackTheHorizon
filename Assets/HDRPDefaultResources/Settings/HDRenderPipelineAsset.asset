@@ -186,7 +186,7 @@ MonoBehaviour:
     maximumLODLevelQualityLevel: 0
     materialQuality: 0
   m_RenderPipelineSettings:
-    supportShadowMask: 0
+    supportShadowMask: 1
     supportSSR: 0
     supportSSAO: 1
     supportSubsurfaceScattering: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
     customBufferFormat: 12
     supportedLitShaderMode: 2
     supportDecals: 1
-    msaaSampleCount: 1
+    msaaSampleCount: 4
     supportMotionVectors: 1
     supportRuntimeDebugDisplay: 1
     supportDitheringCrossFade: 1
@@ -229,7 +229,7 @@ MonoBehaviour:
       reflectionCubemapSize: 256
       reflectionCacheCompressed: 0
       planarReflectionCacheCompressed: 0
-      skyReflectionSize: 256
+      skyReflectionSize: 512
       skyLightingOverrideLayerMask:
         serializedVersion: 2
         m_Bits: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
       maxDirectionalShadowMapResolution: 2048
       maxPunctualShadowMapResolution: 2048
       maxAreaShadowMapResolution: 2048
-      supportScreenSpaceShadows: 0
+      supportScreenSpaceShadows: 1
       maxScreenSpaceShadowSlots: 4
       screenSpaceShadowBufferFormat: 48
     decalSettings:
