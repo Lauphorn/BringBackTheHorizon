@@ -42,4 +42,14 @@ public class MenuUi : MonoBehaviour
     {
         TransitionStart = true;
     }
+
+    public void Show(Animator Anim)
+    {
+        Anim.SetBool("Show", true);
+    }
+
+    public void Hide(Animator Anim)
+    {
+        Anim.SetBool("Show", false);
+    }
 }

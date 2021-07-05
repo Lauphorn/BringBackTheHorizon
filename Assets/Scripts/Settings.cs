@@ -21,5 +21,6 @@ public class Settings : MonoBehaviour
     public enum Lang { FR, ENG };
     public Lang currentLang;
 
-
+    public enum shadowquality {low,med,hig,ult};
+    public shadowquality currentShadowQuality;
 }

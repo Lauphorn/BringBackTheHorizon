@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 545781183}
   - component: {fileID: 1349347384}
   - component: {fileID: 1757876449}
+  - component: {fileID: 1971235893}
   m_Layer: 0
   m_Name: Lantern
   m_TagString: Untagged
@@ -152,6 +153,23 @@ MonoBehaviour:
   Sub: {fileID: 0}
   Emissive:
   - {fileID: 2397252}
+--- !u!114 &1971235893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131e62640a81d644aa53124e4342d632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart: 1
+  On: 0
+  Sub: {fileID: 0}
+  Emissive:
+  - {fileID: 2397252}
 --- !u!1 &100862
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +278,7 @@ GameObject:
   - component: {fileID: 2350604}
   - component: {fileID: 10895164}
   - component: {fileID: 5957922729912592902}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Lantern_bulb
   m_TagString: Glass
   m_Icon: {fileID: 0}
@@ -387,7 +405,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6.5e-43, y: 7.1e-44, z: 0, w: -0.000000018147617}
+  m_BoundingSphereOverride: {x: 6.5e-43, y: 9.4e-44, z: 0, w: -0.0000000080515505}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

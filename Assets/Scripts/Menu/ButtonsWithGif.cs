@@ -49,23 +49,4 @@ public class ButtonsWithGif : MonoBehaviour
         }
     }
 
-    public void Show(Animator Anim)
-    {
-        hover = true;
-        Anim.SetBool("Show", true);
-        HoverDone = false;
-    }
-
-    public void Hide(Animator Anim)
-    {
-        hover = false;
-        Anim.SetBool("Show", false);
-
-        place += 1;
-
-        if (place >= Typos.Count)
-        {
-            place = 0;
-        }
-    }
 }
