@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,16 +13,22 @@ public class PauseMenu : MonoBehaviour
     public Animator Anim;
     public Animator settings_;
 
-
+    private Exposure e;
+    public Volume volume;
+    public Slider slider;
     public bool mnu;
 
     void Start()
     {
+        volume.sharedProfile.TryGet<Exposure>(out e);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        e.fixedExposure.value = -slider.value;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Anim.GetBool("Open"))
@@ -33,7 +42,7 @@ public class PauseMenu : MonoBehaviour
 
             if (settings_.GetBool("Open"))
             {
-                UnPause();
+                SettingsOff();
             }
         }
     }
@@ -71,12 +80,12 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
-    public void Pause()
+    public void Settings()
     {
         settings_.SetBool("Open", true);
         Anim.SetBool("Show", false);
     }
-    public void UnPause()
+    public void SettingsOff()
     {
         settings_.SetBool("Open", false);
         Anim.SetBool("Show", true);
