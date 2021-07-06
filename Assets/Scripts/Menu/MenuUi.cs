@@ -27,9 +27,9 @@ public class MenuUi : MonoBehaviour
         {
             Aud.volume -= 0.01f;
             timer += Time.deltaTime;
-            if (timer <= 2.5f)
+            if (menuScript.AO.progress>0.9f)
             {
-                TransitionImg.sprite = TransitionSprite[Mathf.FloorToInt(timer * 40)];
+                TransitionImg.sprite = TransitionSprite[Mathf.RoundToInt(menuScript.AO.progress *100)];
             }
             else
             {

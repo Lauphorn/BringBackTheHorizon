@@ -8,6 +8,8 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
 
     public Animator Anim;
+    public Animator settings_;
+
 
     public bool mnu;
 
@@ -27,6 +29,11 @@ public class PauseMenu : MonoBehaviour
             else
             {
                 ShowMenu();
+            }
+
+            if (settings_.GetBool("Open"))
+            {
+                UnPause();
             }
         }
     }
@@ -62,6 +69,17 @@ public class PauseMenu : MonoBehaviour
     public void Menu()
     {
         SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
+    public void Pause()
+    {
+        settings_.SetBool("Open", true);
+        Anim.SetBool("Show", false);
+    }
+    public void UnPause()
+    {
+        settings_.SetBool("Open", false);
+        Anim.SetBool("Show", true);
     }
 
     public void Quit()
