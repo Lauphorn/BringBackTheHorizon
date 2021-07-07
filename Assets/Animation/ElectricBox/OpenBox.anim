@@ -415,6 +415,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.6333333
         value: {x: -0.5699961, y: -0.0910003, z: 0.28200042}
+        inSlope: {x: -1.4999994, y: 1.1399996, z: -0.043627333}
+        outSlope: {x: -1.4999994, y: 1.1399996, z: -0.043627333}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 1.7166667
+        value: {x: -0.775, y: 0.007, z: 0.071}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -892,6 +901,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.6333333
         value: -0.5699961
+        inSlope: -1.4999994
+        outSlope: -1.4999994
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.7166667
+        value: -0.775
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -992,6 +1010,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.6333333
         value: -0.0910003
+        inSlope: 1.1399996
+        outSlope: 1.1399996
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.7166667
+        value: 0.007
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1092,6 +1119,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 1.6333333
         value: 0.28200042
+        inSlope: -0.043627333
+        outSlope: -0.043627333
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.7166667
+        value: 0.071
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2662,6 +2698,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.28333333
     functionName: LaunchVoice
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.9
+    functionName: PlaySound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

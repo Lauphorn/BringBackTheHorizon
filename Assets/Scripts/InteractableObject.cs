@@ -48,6 +48,10 @@ public class InteractableObject : MonoBehaviour
     public List<SousTitre> Subtitle;
     [ConditionalField("UseVoice")] public int VoiceNumber;
 
+    public bool LaunchSound;
+    public List<AudioClip> SoundList;
+    [ConditionalField("LaunchSound")] public int AudioNumber;
+
     public bool GrabObject;
     [ConditionalField("GrabObject")] public Transform ObjectGrabbed;
     [ConditionalField("GrabObject")] public Transform GrabbingHand;
@@ -86,7 +90,7 @@ public class InteractableObject : MonoBehaviour
         KnobAnimator = transform.Find("UiInteraction").transform.GetComponent<Animator>();
 
         gameObject.AddComponent<Rigidbody>().useGravity = false;
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
         gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
 
@@ -336,16 +340,6 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    void OnBecameInvisible()
-    {
-        Debug.Log("Invisible "+ gameObject.name);
-    }
-
-    void OnBecameVisible()
-    {
-        Debug.Log("Visible " + gameObject.name);
-    }
-
     public void LaunchVoice()
     {
         Subtitle[VoiceNumber].Talk();
@@ -405,6 +399,20 @@ public class InteractableObject : MonoBehaviour
         done = true;
     }
 
+    public void PlaySound()
+    {
+        if(GetComponent<AudioSource>() == null)
+        {
+            AudioSource As = transform.GetOrAddComponent<AudioSource>();
+            As.PlayOneShot(SoundList[AudioNumber]);
+        }
+        else
+        {
+            AudioSource As = GetComponent<AudioSource>();
+            As.PlayOneShot(SoundList[AudioNumber]);
+        }
+    }
+
     public void SwitchActivation()
     {
         Activated = !Activated;
@@ -424,77 +432,4 @@ public class InteractableObject : MonoBehaviour
     {
         blocked = !blocked;
     }
-
-    /*
-    [ExecuteInEditMode]
-    private void OnValidate()
-    {
-        if (!Application.isPlaying)
-        {
-
-            //Tag and layer
-            gameObject.tag = "Item";
-            gameObject.layer = 11;
-
-            //Lookat
-            if (LookAtTarget && transform.Find("Lookat") == null && LookFollowPosition == null)
-            {
-                LookFollowPosition = Instantiate(LookatPrefab, transform).transform;
-                LookFollowPosition.name = "Lookat";
-                Debug.Log("Problem" + gameObject.name);
-            }
-            if (!LookAtTarget && LookFollowPosition != null)
-            {
-                StartCoroutine(Destroy(LookFollowPosition.gameObject));
-            }
-
-            //movehands
-            if (MoveHands && transform.Find("Character") ==null && HandsHolder == null)
-            {
-                HandsHolder = Instantiate(BodyPrefab, transform).GetComponent<BodyHandHolder>();
-                HandsHolder.name = "Character";
-            }
-            if (!MoveHands && HandsHolder != null)
-            {
-                StartCoroutine(Destroy(HandsHolder.gameObject));
-            }
-
-            //uiKnob
-            if (KnobAnimator == null && transform.Find("UiInteraction") == null )
-            {
-                KnobAnimator = Instantiate(UiInteractionPrefab, transform).GetComponent<Animator>();
-                KnobAnimator.name = "UiInteraction";
-            }
-            if (Anim == null && GetComponent<Animator>() ==null)
-            {
-                Anim = gameObject.AddComponent<Animator>();
-            }
-
-            if (Zone == null && transform.Find("Zone") == null)
-            {
-                Zone = Instantiate(ZonePrefab, transform).GetComponent<ObjectZone>();
-                Zone.obj = this;
-                Zone.name = "Zone";
-            }
-
-            //uiKnob
-            if (MoveBody && transform.Find("BodyPos") == null && BodyFollowPosition == null)
-            {
-                BodyFollowPosition = Instantiate(BodyPosPrefab, transform).transform;
-                BodyFollowPosition.name = "BodyPos";
-            }
-            if (!MoveBody && BodyFollowPosition != null)
-            {
-                StartCoroutine(Destroy(BodyFollowPosition.gameObject));
-            }
-
-        }
-
-    }
-
-    IEnumerator Destroy(GameObject go)
-    {
-        yield return new WaitForEndOfFrame();
-        DestroyImmediate(go);
-    }*/
 }

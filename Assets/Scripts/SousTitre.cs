@@ -7,7 +7,7 @@ public class SousTitre : MonoBehaviour
 
     public AudioClip Doublage;
 
-    public string aide = "(& Left)(= Right)(0 wait 1 sec)(1 delete all)";
+    public string aide = "(& Left)(= Right)(0 wait 1 sec)";
     [TextArea(15, 20)]
     public string VoixFr;
 

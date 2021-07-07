@@ -66,7 +66,6 @@ public class GrabObject : MonoBehaviour
         {
             transform.GetComponent<Rigidbody>().AddForce((GrabFollowPosition.transform.position - transform.position)*0.75f,ForceMode.VelocityChange);
             transform.GetComponent<Rigidbody>().drag = 5 - (Vector3.Magnitude(GrabFollowPosition.transform.position - transform.position))*2;
-            Debug.Log("magnitude  " + Vector3.Magnitude(GrabFollowPosition.transform.position - transform.position));
         }
 
         if (ShowIfNarration)

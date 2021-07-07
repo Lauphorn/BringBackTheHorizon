@@ -8,8 +8,8 @@ public class Vision : MonoBehaviour
 
     public Volume Vol;
 
-    float ValueGoal;
-    float speed;
+    public float ValueGoal;
+    public float speed = 0.005f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,10 @@ public class Vision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            //ChangeVision(ValueGoal);
+        }
     }
 
     public void ChangeVision(float Value)
@@ -35,13 +38,10 @@ public class Vision : MonoBehaviour
 
     public IEnumerator ChangeWeight()
     {
-        float startingValue = Vol.weight;
-
-        for (float t = 0; t < 1.0f; t += Time.deltaTime / speed)
+        while (Vol.weight != ValueGoal)
         {
-            Vol.weight = Mathf.Lerp(startingValue, ValueGoal, t);
+            Vol.weight = Mathf.MoveTowards(Vol.weight, ValueGoal, speed);
             yield return null;
         }
     }
-
 }
