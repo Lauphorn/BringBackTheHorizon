@@ -14,11 +14,13 @@ public class Vision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        speed = 0.001f;
         if (Input.GetKeyDown(KeyCode.N))
         {
             //ChangeVision(ValueGoal);

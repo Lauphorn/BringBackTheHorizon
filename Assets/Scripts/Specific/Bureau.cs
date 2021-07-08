@@ -30,6 +30,12 @@ public class Bureau : MonoBehaviour
         Video.Play();
     }
 
+    public void OffScreen()
+    {
+        Screen.SetActive(false);
+        Video.Stop();
+    }
+
     public void Pause()
     {
         Video.Pause();
@@ -48,7 +54,7 @@ public class Bureau : MonoBehaviour
     }
     public void FollowNormal()
     {
-        followscript.Damp = 0.01f;
+        followscript.Damp = 0.05f;
         followscript.TargetPosition = oldfollow;
     }
     public void followdamp()

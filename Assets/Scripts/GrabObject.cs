@@ -9,6 +9,8 @@ public class GrabObject : MonoBehaviour
     [HideInInspector]
     public bool looked, interactable;
     public Narration.Narrations NarrationNeeded;
+    public AudioSource source;
+    public AudioClip Bonk;
 
     GameObject CameraPlace;
     GameObject GrabFollowPosition;
@@ -124,5 +126,10 @@ public class GrabObject : MonoBehaviour
         {
             InRange = false;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        source.PlayOneShot(Bonk);
     }
 }
