@@ -11,7 +11,6 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.backgroundLoadingPriority = ThreadPriority.Normal;
 
     }
 
@@ -35,7 +34,7 @@ public class Menu : MonoBehaviour
     {
         AO = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
         AO.allowSceneActivation = false;
-        return null;
+        yield return null;
 
     }
 }

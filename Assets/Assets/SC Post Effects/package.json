@@ -1,0 +1,10 @@
+{
+    "name": "sc.posteffects",
+    "displayName": "SC Post Effects",
+    "version": "2.1.0",
+    "unity": "2019.1",
+    "description": "Additional effects for the Post Processing Stack",
+    "dependencies": {
+        "com.unity.postprocessing": "2.3.0"
+    }
+}

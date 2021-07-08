@@ -23,15 +23,12 @@ public class MenuUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (TransitionStart)
         {
-            Aud.volume -= 0.01f;
-            timer += Time.deltaTime;
-            if (menuScript.AO.progress>0.9f)
-            {
-                TransitionImg.sprite = TransitionSprite[Mathf.RoundToInt(menuScript.AO.progress *100)];
-            }
-            else
+            Aud.volume -= 0.005f;
+            TransitionImg.sprite = TransitionSprite[Mathf.RoundToInt(menuScript.AO.progress * 100)];
+            if (menuScript.AO.progress>=0.9f)
             {
                 menuScript.AO.allowSceneActivation = true;
             }
