@@ -8,11 +8,11 @@ public class Phone : MonoBehaviour
     public List<Narration.Narrations> ListeDeNarrations;
     public List<SousTitre> ListeDeVoix;
 
-    int NuméroVoix, messagesDispo;
+    int NuméroVoix;
 
     public GameObject Light;
     float LightTimer;
-    bool NarrationCheckDone, OnLight, Next;
+    bool NarrationCheckDone, OnLight, Next, start;
 
 
     public InteractableObject Anim;
@@ -43,10 +43,7 @@ public class Phone : MonoBehaviour
                 OnLight = true;
                 NarrationCheckDone = true;
             }
-            else
-            {
-                Anim.done = true;
-            }
+
         }
 
         if (OnLight)
@@ -62,59 +59,47 @@ public class Phone : MonoBehaviour
             }
         }
 
-        if (NarrationCheckDone)
+        if (start)
         {
-            if (Next)
+            if (NarrationCheckDone)
             {
-                OnLight = true;
+                if (Next)
+                {
+                    OnLight = true;
 
-                if (voix.IsPlaying)
-                {
-                    Anim.done = true;
-                }
-                else
-                {
-                    Anim.done = false;
+                    if (!voix.IsPlaying)
+                    {
+                        if (NuméroVoix < ListeDeVoix.Count)
+                        {
+                            Launch();
+                            Next = false;
+                        }
+                        else
+                        {
+                            Anim.Release();
+                            start = false;
+                        }
+                    }
                 }
             }
-            else
-            {
-                OnLight = false;
-                Anim.done = false;
-            }
-
-
         }
+        
     }
 
     public void Launch()
     {
-        Audio.Play();
-        ListeDeVoix[NuméroVoix].Talk();
-
-        while(Next)
-        {
-            if (NuméroVoix < ListeDeVoix.Count)
-            {
-                if (ListeDeVoix[NuméroVoix] != null)
-                {
-                    if (narr.CheckNarration(ListeDeNarrations[NuméroVoix]))
-                    {
-                        Next = true;
-                        messagesDispo += 1;
-                    }
-                    else
-                    {
-                        Next = false;
-                    }
-                }
-
-            }
-            else
-            {
-                Next = false;
-            }
-        }
+        StartCoroutine(LaunchMessage());
+        start = true;
     }
+
+    IEnumerator LaunchMessage()
+    {
+        yield return new WaitForSeconds(0.5f);
+        ListeDeVoix[NuméroVoix].Talk();
+        NuméroVoix += 1;
+        Next = true;
+    }
+
+
 
 }

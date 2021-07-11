@@ -128,7 +128,6 @@ public class Voice : MonoBehaviour
         STitreUi.text = "";
         IsPlaying = false;
         fadeOn = false;
-        //STitreUi.color = zm;
     }
 
 }

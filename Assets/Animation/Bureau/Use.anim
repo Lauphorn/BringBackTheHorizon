@@ -14051,6 +14051,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
+    functionName: LaunchArnoVoice
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
     functionName: ChangeWeightLeft
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -14143,6 +14150,13 @@ AnimationClip:
     messageOptions: 0
   - time: 27.233334
     functionName: OffScreen
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 27.783333
+    functionName: EndUi
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

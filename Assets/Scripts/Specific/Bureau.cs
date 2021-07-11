@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.Timeline;
+using UnityEngine.Playables;
 
 public class Bureau : MonoBehaviour
 {
     public GameObject Screen;
     public VideoPlayer Video;
     public Vision visionscript;
+    public AudioSource AudioArnaud;
 
+    public PlayableDirector director;
     public Follow followscript;
     public Transform followpos;
     Transform oldfollow;
@@ -65,5 +69,15 @@ public class Bureau : MonoBehaviour
     public void ChangeVision()
     {
         visionscript.ChangeVision(0.9f);
+    }
+
+    public void LaunchArnoVoice()
+    {
+        AudioArnaud.Play();
+    }
+
+    public void EndUi()
+    {
+        director.Play();
     }
 }
